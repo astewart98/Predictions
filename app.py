@@ -1,10 +1,14 @@
 from flask import Flask, request, jsonify, session, redirect, url_for, render_template
 import pymssql
 import bcrypt
+import os
 from API import universalData
 
 app = Flask(__name__)
 app.secret_key = 'dev_secret_key_12345'
+print("DB_SERVER:", os.getenv("DB_SERVER"))
+print("DB_USER:", os.getenv("DB_USER"))
+
 
 # Homepage redirect
 @app.route('/')
