@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="../static/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <div class="site-banner">
+            <div class="banner-content">
+                <h1>Sport's Predictions</h1>
+                <div class="site-banner-button" id="toggle-menu">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+        <div id="menu" class="hidden">
+            <div class="menu-buttons">
+                <button id="logout-button" class="button">Sign Out</button>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div id="league"></div>
+            <div id="league-template" class="container" league-id="" style="display: none;"> 
+                <a href="#" class="league-link">
+                    <div id="leagueInfo" class="league-info">
+                        <p class="league-name">Insterstate Football League</p>
+                        <p class="league-info-right">
+                            <strong>League ID:</strong> <span class="league-info-id"></span>
+                            <span class="league-code">; <strong>Code:</strong> <span class="league-info-pass"></span></span>
+                        </p>                                               
+                    </div>
+                    <div id="teamInfo" class="user-team-info">
+                        <img class="user-team-logo" src="">
+                        <h1 class="team-name"><span class="team-name-text"></span></h1> 
+                    </div>
+                    <h2>Season Stats</h2>
+                    <div class="season-stat-container">
+                        <div class="season-stat-sections">
+                            <h1 class="season-points">183</h1> 
+                            <h3>POINTS</h3>
+                        </div>
+                        <div class="season-stat-sections">
+                            <h1 class="season-winners">22</h1> 
+                            <h3>WINNERS</h3>
+                        </div>
+                        <div class="season-stat-sections">
+                            <h1 class="season-wins">2</h1> 
+                            <h3>WINS</h3>
+                        </div>
+                        <div class="season-stat-sections">
+                            <h1 class="season-score">5</h1> 
+                            <h3>CORRECT SCORE</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="container">
+                <h5>New League</h5>
+                <div class="new-league-container">
+                    <button id="toggle-create-league" class="button">Create New League</button>
+                    <button id="toggle-join-league" class="button">Join a League</button>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div id="backdrop" class="hidden"></div>
+                <div id="login-register" class="hidden">
+                    <div id="create-league-form">
+                        <h2 id="form-title">Create a League</h2>
+                        <label for="create-league-name">League Name:</label>
+                        <input id="create-league-name" name="create-league-name" placeholder="My League Name" required maxlength="30"><br>
+                        <label for="league-type">League Type:</label>
+                        <div class="radio-wrapper">
+                            <div class="radio-container">
+                                <input type="radio" id="public" name="create-public-private" value="public" onchange="updateContentVisibility();" required>
+                                <label for="public" class="radio-label">Public</label>
+                                <input type="radio" id="private" name="create-public-private" value="private" onchange="updateContentVisibility();" required>
+                                <label for="private" class="radio-label">Private</label>
+                            </div>
+                        </div><br>
+                        <div id="league-password" class="league-password">
+                            <label for="create-league-pass">League Code:</label>
+                            <input id="create-league-pass" name="create-league-pass" placeholder="####" minlength="4" maxlength="4" pattern="\d{4}">
+                        </div>
+                        
+                        <label for="league-size">League Size:</label>
+                        <div class="radio-wrapper">
+                            <div class="radio-container">
+                                <input type="radio" id="2" name="create-league-size" value="2">
+                                <label for="2" class="radio-label">2</label>
+                                <input type="radio" id="4" name="create-league-size" value="4">
+                                <label for="4" class="radio-label">4</label>
+                                <input type="radio" id="6" name="create-league-size" value="6">
+                                <label for="6" class="radio-label">6</label>
+                                <input type="radio" id="8" name="create-league-size" value="8">
+                                <label for="8" class="radio-label">8</label>
+                                <input type="radio" id="10" name="create-league-size" value="10">
+                                <label for="10" class="radio-label">10</label>
+                            </div>
+                        </div><br>
+                        <h2 id="form-title">Create Your Team</h2>
+                        <label for="create-team-name">Team Name:</label>
+                        <input id="create-team-name" name="create-team-name" placeholder="My Team Name" required maxlength="20"><br>
+                        <label for="league">Choose a Logo:</label>
+                        <div class="radio-wrapper">
+                            <div class="radio-container">
+                                <input type="radio" id="create_logo_a" class="logo-create" name="logo-create" value="logo_a">
+                                <label for="create_logo_a" class="radio-label">
+                                    <img class="team-logo-select" src="https://g.espncdn.com/lm-static/logo-packs/ffl/CrazyHelmets-ToddDetwiler/Helmets_01.svg">
+                                </label>
+                                <input type="radio" id="create_logo_b" class="logo-create" name="logo-create" value="logo_b">
+                                <label for="create_logo_b" class="radio-label">
+                                    <img class="team-logo-select" src="https://g.espncdn.com/lm-static/logo-packs/ffl/CrazyHelmets-ToddDetwiler/Helmets_04.svg">
+                                </label>
+                                <input type="radio" id="create_logo_c" class="logo-create" name="logo-create" value="logo_c">
+                                <label for="create_logo_c" class="radio-label">
+                                    <img class="team-logo-select" src="https://g.espncdn.com/lm-static/logo-packs/ffl/CrazyHelmets-ToddDetwiler/Helmets_05.svg">
+                                </label>
+                                <input type="radio" id="create_logo_d" class="logo-create" name="logo-create" value="logo_d">
+                                <label for="create_logo_d" class="radio-label">
+                                    <img class="team-logo-select" src="https://g.espncdn.com/lm-static/logo-packs/ffl/CrazyHelmets-ToddDetwiler/Helmets_03.svg">
+                                </label>
+                            </div>                        
+                        </div><br>
+                        <button id="create-submit" class="button">Create League</button><br>
+                    </div>
+                </div>
+                <div id="backdrop" class="hidden"></div>
+                <div id="login-register1" class="hidden">
+                    <div id="join-league-form">
+                        <h2 id="form-title">Join a League</h2>
+                        <label for="league-id-verify">League ID:</label>
+                        <input id="league-id-verify" name="league-id-verify" placeholder="##" required><br>
+                        <div id="join-league-password" class="league-password" style="display: none;">
+                            <label for="join-league-pass">League Code:</label>
+                            <input id="join-league-pass" name="join-league-pass" placeholder="####" minlength="4" maxlength="4" pattern="\d{4}">
+                        </div>
+
+                        <label for="join-team-name">Team Name:</label>
+                        <input id="join-team-name" name="join-team-name" placeholder="My Team Name" required maxlength="20"><br>
+                        <label for="league">Choose a Logo:</label>
+                        <div class="radio-wrapper">
+                            <div class="radio-container">
+                                <input type="radio" id="join_logo_a" class="logo-join" name="logo-join" value="logo_a">
+                                <label for="join_logo_a" class="radio-label">
+                                    <img class="team-logo-select" src="https://g.espncdn.com/lm-static/logo-packs/ffl/CrazyHelmets-ToddDetwiler/Helmets_01.svg">
+                                </label>
+                                <input type="radio" id="join_logo_b" class="logo-join" name="logo-join" value="logo_b">
+                                <label for="join_logo_b" class="radio-label">
+                                    <img class="team-logo-select" src="https://g.espncdn.com/lm-static/logo-packs/ffl/CrazyHelmets-ToddDetwiler/Helmets_04.svg">
+                                </label>
+                                <input type="radio" id="join_logo_c" class="logo-join" name="logo-join" value="logo_c">
+                                <label for="join_logo_c" class="radio-label">
+                                    <img class="team-logo-select" src="https://g.espncdn.com/lm-static/logo-packs/ffl/CrazyHelmets-ToddDetwiler/Helmets_05.svg">
+                                </label>
+                                <input type="radio" id="join_logo_d" class="logo-join" name="logo-join" value="logo_d">
+                                <label for="join_logo_d" class="radio-label">
+                                    <img class="team-logo-select" src="https://g.espncdn.com/lm-static/logo-packs/ffl/CrazyHelmets-ToddDetwiler/Helmets_03.svg">
+                                </label>
+                            </div>                        
+                        </div><br>
+                        <button id="join-submit" class="button">Join League</button><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const userId = sessionStorage.getItem('user_id');
+            document.addEventListener('DOMContentLoaded', initializePage);
+
+            // Redirect to homepage if not logged in
+            if (!userId) {
+                window.location.href = '/';  
+            }
+
+            // Menu visibility
+            document.getElementById('toggle-menu').addEventListener('click', function() {
+                var menu = document.getElementById('menu');
+
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden'); 
+                    setTimeout(function() {
+                        menu.classList.add('visible'); 
+                    }, 20); 
+                } else {
+                    menu.classList.remove('visible'); 
+                    setTimeout(function() {
+                        menu.classList.add('hidden'); 
+                    }, 400); 
+                }
+            });
+
+            async function initializePage() {
+                const currentWeekId = await fetchCurrentWeekId(); 
+            }
+
+            async function fetchCurrentWeekId() {
+                let current_week_id; 
+                try {
+                    const response = await fetch('/api/get_current_week'); 
+                    if (!response.ok) throw new Error('Failed to fetch current week');
+                    const data = await response.json();
+                    current_week_id = data.current_week_id; 
+                    initialCurrentWeekId = data.current_week_id; 
+                } catch (error) {
+                    console.error('Error fetching current week ID:', error);
+                }
+
+                if (current_week_id) {
+                    fetchLeagues(userId);
+                }
+            }
+
+            // Pulls user associated leagues
+            async function fetchLeagues(userId) {
+                try {
+                    const response = await fetch('/api/fetch_leagues', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ user_id: userId })
+                    });
+                
+                    if (!response.ok) {
+                        console.error('Failed to fetch team info');
+                        return;
+                    }
+                
+                    const data = await response.json();
+                    console.log('Fetched data:', data); 
+                
+                    updateLeagues(data.league_data, data.season_stats_result, data.league_name);
+                    console.log('Fetched Season Stats:', data.league_name);
+
+                } catch (error) {
+                    console.error('Error fetching team info:', error);
+                }
+            }
+
+            function updateLeagues(leagueData, seasonStatsResult, leagueName) {
+                const leagueContainer = document.getElementById('league');
+                leagueContainer.innerHTML = '';  
+                        
+                leagueData.forEach((data) => {
+                    const leagueElement = document.getElementById('league-template').cloneNode(true);
+                    leagueElement.style.display = 'block';  
+                
+                    const leagueId = data[0];
+                    const teamPicture = data[1]; 
+                    const teamName = data[2]; 
+                    const isLm = data[3]
+
+                    leagueElement.setAttribute('league-id', leagueId);
+                    leagueElement.querySelector('.user-team-logo').setAttribute('src', teamPicture);
+                    leagueElement.querySelector('.team-name-text').innerText = teamName;
+                
+                    leagueElement.addEventListener('click', () => {
+                        const leagueId = data[0]; 
+                        window.location.href = `/leaguePage?leagueId=${leagueId}`; 
+                    });
+
+                    const leagueStats = seasonStatsResult.find(stats => stats[0] === leagueId);
+                    if (leagueStats) {
+                        leagueElement.querySelector('.season-points').innerText = leagueStats[1];
+                        leagueElement.querySelector('.season-winners').innerText = leagueStats[2];
+                        leagueElement.querySelector('.season-wins').innerText = leagueStats[4];
+                        leagueElement.querySelector('.season-score').innerText = leagueStats[3];
+                    } else {
+                        
+                        leagueElement.querySelector('.season-points').innerText = 0;
+                        leagueElement.querySelector('.season-winners').innerText = 0;
+                        leagueElement.querySelector('.season-wins').innerText = 0;
+                        leagueElement.querySelector('.season-score').innerText = 0;
+                    }
+
+                    const leagueDetails = leagueName.find(name => name[0] === leagueId);
+                    const lmDetails = leagueData.find(info => info[0] === leagueId);
+
+                    if (leagueDetails) {
+                        leagueElement.querySelector('.league-name').innerText = leagueDetails[1];
+                        leagueElement.querySelector('.league-info-id').innerText = leagueDetails[0];
+                    
+                        const isLm = lmDetails && lmDetails[3]; 
+                    
+                        const leaguePassElement = leagueElement.querySelector('.league-info-pass');
+                    
+                        if (isLm) {
+                            
+                            if (leaguePassElement) {
+                                leaguePassElement.innerText = leagueDetails[2]; 
+
+                                if (leagueDetails[2] === null || leagueDetails[2] === '') {
+                                    leagueElement.querySelector('.league-code').style.display = 'none'; 
+                                } else {
+                                    leagueElement.querySelector('.league-code').style.display = 'inline'; 
+                                }
+                            } else {
+                                console.warn('League pass element not found.'); 
+                            }
+                        } else {
+                            
+                            if (leaguePassElement) {
+                                leaguePassElement.innerText = ''; 
+                                leagueElement.querySelector('.league-code').style.display = 'none'; 
+                            }
+                        }
+                        
+                    } else {
+                        console.warn(`No league name found with ID: ${leagueId}`);
+                    }
+
+                    leagueContainer.appendChild(leagueElement);
+                });
+            }
+
+            // League password visibility for private leagues
+            function updateContentVisibility() {
+                const isPrivateSelected = document.getElementById('private').checked;  
+                const contentContainer = document.getElementById('league-password');
+
+                if (isPrivateSelected) {
+                    contentContainer.style.display = 'block';
+                    contentContainer.classList.add('expanded');
+                } else {
+                    contentContainer.style.display = 'none';
+                    contentContainer.classList.remove('expanded');
+                }
+            }
+
+            function checkLeaguePrivacy() {
+                const leagueId = document.getElementById('league-id-verify').value;
+
+                if (!leagueId) {
+                    return; 
+                }
+
+                fetch(`/api/check_league_privacy/${leagueId}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            const contentContainer = document.getElementById('join-league-password');
+                            contentContainer.style.display = 'none'; 
+                            contentContainer.classList.remove('expanded');
+                            throw new Error('League not found or other error'); 
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log(data); 
+                        const contentContainer = document.getElementById('join-league-password');
+                        if (data.is_private) {
+                            contentContainer.style.display = 'block'; 
+                            contentContainer.classList.add('expanded');
+                        } else {
+                            contentContainer.style.display = 'none'; 
+                            contentContainer.classList.remove('expanded');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error);
+                        
+                    });
+            }
+
+            function debounce(func, wait) {
+                let timeout;
+                return function(...args) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(this, args), wait);
+                };
+            }
+
+            const leagueIdInput = document.getElementById('league-id-verify');
+
+            const debouncedCheckLeaguePrivacy = debounce(checkLeaguePrivacy, 500); 
+
+            leagueIdInput.addEventListener('blur', checkLeaguePrivacy); 
+            leagueIdInput.addEventListener('keyup', debouncedCheckLeaguePrivacy); 
+
+            document.getElementById('toggle-create-league').addEventListener('click', function() {
+                toggleCreateLeague();
+            });
+            
+            document.getElementById('toggle-join-league').addEventListener('click', function() {
+                toggleJoinLeague();
+            });
+
+            function toggleCreateLeague() {
+                var createLeague = document.getElementById('login-register');
+                var backdrop = document.getElementById('backdrop');
+
+                if (createLeague.classList.contains('hidden')) {
+                    createLeague.classList.remove('hidden'); 
+                    backdrop.classList.remove('hidden');
+                    setTimeout(function() {
+                        createLeague.classList.add('visible');
+                        backdrop.classList.add('visible'); 
+                    }, 20); 
+                } else {
+                    createLeague.classList.remove('visible'); 
+                    backdrop.classList.remove('visible');
+                    setTimeout(function() {
+                        createLeague.classList.add('hidden'); 
+                        backdrop.classList.add('hidden');
+                    }, 400); 
+                }
+            }
+
+            function toggleJoinLeague() {
+                var joinLeague = document.getElementById('login-register1');
+                var backdrop = document.getElementById('backdrop');
+
+                if (joinLeague.classList.contains('hidden')) {
+                    joinLeague.classList.remove('hidden'); 
+                    backdrop.classList.remove('hidden');
+                    setTimeout(function() {
+                        joinLeague.classList.add('visible');
+                        backdrop.classList.add('visible'); 
+                    }, 20); 
+                } else {
+                    joinLeague.classList.remove('visible'); 
+                    backdrop.classList.remove('visible');
+                    setTimeout(function() {
+                        joinLeague.classList.add('hidden'); 
+                        backdrop.classList.add('hidden');
+                    }, 400); 
+                }
+            }
+
+            document.addEventListener('click', function(event) {
+                var createLeague = document.getElementById('login-register');
+                var joinLeague = document.getElementById('login-register1');
+                var backdrop = document.getElementById('backdrop');
+
+                if (!createLeague.contains(event.target) && !backdrop.contains(event.target) && !event.target.matches('#toggle-create-league')) {
+                    if (!createLeague.classList.contains('hidden')) {
+                        toggleCreateLeague();
+                    }
+                }
+
+                if (!joinLeague.contains(event.target) && !backdrop.contains(event.target) && !event.target.matches('#toggle-join-league')) {
+                    if (!joinLeague.classList.contains('hidden')) {
+                        toggleJoinLeague();
+                    }
+                }
+
+                if (backdrop.contains(event.target)) {
+                    if (!createLeague.classList.contains('hidden')) {
+                        toggleCreateLeague();
+                    }
+                    if (!joinLeague.classList.contains('hidden')) {
+                        toggleJoinLeague();
+                    }
+                }
+            });
+
+            const radioButtons = document.querySelectorAll('.radio-container input[type="radio"]');
+            radioButtons.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    radioButtons.forEach(r => r.nextElementSibling.classList.remove('selected'));
+                    if (this.checked) {
+                        this.nextElementSibling.classList.add('selected');
+                    }
+                });
+            });
+
+            document.getElementById('create-submit').addEventListener('click', handleCreate);
+            document.getElementById('join-submit').addEventListener('click', handleJoin);
+
+            // Create a league functionality
+            function handleCreate(event) {
+                event.preventDefault(); 
+                const leagueName = document.getElementById('create-league-name').value;
+                const teamName = document.getElementById('create-team-name').value;
+                const isLm = 1;
+
+                const selectedPrivacy = document.querySelector('input[name="create-public-private"]:checked');
+                const isPrivate = selectedPrivacy ? (selectedPrivacy.value === 'private' ? 1 : 0) : null;
+
+                const selectedLeagueSize = document.querySelector('input[name="create-league-size"]:checked');
+                const leagueSize = selectedLeagueSize ? parseInt(selectedLeagueSize.value, 10) : null;
+
+                const selectedLogo = document.querySelector('input[name="logo-create"]:checked');
+                const teamLogo = selectedLogo 
+                    ? selectedLogo.nextElementSibling.querySelector('img').src 
+                    : null;
+
+                const leaguePass = document.getElementById('create-league-pass').value;
+
+                if (leagueName && teamName && isPrivate !== null && leagueSize && teamLogo) {
+                    
+                    if (isPrivate === 1) {
+                        
+                        if (leaguePass.length === 4 && !isNaN(leaguePass) && parseInt(leaguePass, 10) > 0) {
+                            
+                            createLeague(leagueName, teamName, isPrivate, leagueSize, teamLogo, isLm, leaguePass);
+                        } else {
+                            alert('League pass must be a 4-digit number greater than 0.');
+                        }
+                    } else {
+                        
+                        createLeague(leagueName, teamName, isPrivate, leagueSize, teamLogo, isLm, null);
+                    }
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            }
+
+            // Join a league functionality
+            function handleJoin(event) {
+                event.preventDefault(); 
+                const leagueIdJoin = document.getElementById('league-id-verify').value;
+                const teamName = document.getElementById('join-team-name').value;
+                const leaguePass = document.getElementById('join-league-pass').value;
+                const isLm = 0
+
+                const selectedLogo = document.querySelector('input[name="logo-join"]:checked');
+                const teamLogo = selectedLogo 
+                    ? selectedLogo.nextElementSibling.querySelector('img').src 
+                    : null;
+
+                if (leagueIdJoin && teamName && teamLogo) {
+                    createTeam(leagueIdJoin, teamName, teamLogo, isLm, leaguePass);
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            }
+
+            function createLeague(leagueName, teamName, isPrivate, leagueSize, teamLogo, isLm, leaguePass) {
+                fetch('/api/create_league', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ leagueName, userId, isPrivate, leagueSize, leaguePass })
+                })
+                .then(response => response.json())
+                .then(async data => {
+                    if (data.success) {
+                        const leagueId = data.league_id;
+                        
+                        console.log('League created successfully, League ID:', leagueId);
+                        createTeam(leagueId, teamName, teamLogo, isLm, leaguePass);  
+                    } else {
+                        alert('League creation failed: ' + data.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+            
+            function createTeam(leagueIdJoin, teamName, teamLogo, isLm, leaguePass) {
+                fetch('/api/create_team', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ userId, leagueIdJoin, teamName, teamLogo, isLm, leaguePass })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        
+                        alert('Team created successfully!');
+                        window.location.reload();  
+                    } else {
+                        alert('Team creation failed: ' + data.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+
+            function logout() {
+                sessionStorage.removeItem('user_id');
+                sessionStorage.removeItem('league_id');
+                window.location.href = '/';
+            }
+
+            document.getElementById('logout-button').addEventListener('click', logout);
+
+        </script>
+    </body>
+</html>

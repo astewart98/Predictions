@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="../static/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <div class="site-banner">
+            <div class="banner-content">
+                <h1>Sport's Predictions</h1>
+                <div class="site-banner-button" id="toggle-menu">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+        <div id="menu" class="hidden">
+            <div class="menu-buttons">
+                <button id="toggle-login-register" class="button">Login/Register</button>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div id="backdrop" class="hidden"></div>
+            <div id="login-register" class="hidden">
+                <div id="login-form">
+                    <span class="close-button">&times;</span>
+                    <h2 id="form-title">Log In</h2>
+                    <label for="login-email">E-mail:</label>
+                    <input type="email" id="login-email" name="login-email" placeholder="email@example.com" required><br>
+                    <label for="login-pass">Password:</label>
+                    <input type="password" id="login-pass" name="login-pass" required><br>
+                    <button id="login-submit" class="button">Sign In</button><br>
+
+                    <p>Not Signed up Yet?</p>
+                    <button class="button" id="toggle-to-register">Sign Up</button>
+                </div>
+                <div id="register-form">
+                    <span class="close-button">&times;</span>
+                    <h2 id="form-title">Sign Up</h2>
+                    <label for="register-fname">First Name:</label>
+                    <input type="text" id="register-fname" name="register-fname" required><br>
+                    <label for="register-lname">Last Name:</label>
+                    <input type="text" id="register-lname" name="register-lname" required><br>
+                    <label for="register-email">E-mail:</label>
+                    <input type="email" id="register-email" name="register-email" placeholder="email@example.com" required><br>
+                    <label for="register-pass">Password:</label>
+                    <input type="password" id="register-pass" name="register-pass" required><br>
+                    <label for="confirm-pass">Confirm Password:</label>
+                    <input type="password" id="confirm-pass" name="confirm-pass" required><br>
+                    <button id="register-submit" class="button">Register</button><br>
+
+                    <p>Already a Member?</p>
+                    <button class="button" id="toggle-to-login">Log In</button>
+                </div>
+            </div>
+            <div id="home-page-content">
+                <div class="home-page-text">
+                    <h1>The Ultimate Weekly Score Prediction Challenge</h1>
+                    <p>Predict each football games score every week.<br>Earn points for accuracy, and top the league!</p>
+                    <div>
+                        <button id="get-started" class="button">Get Started</button>
+                    </div>
+                </div>
+                <div class="shadow-container">
+                    <img src="{{ url_for('static', filename='images/Predic-homepage-graphic.png') }}" class="home-page-graphic">
+                </div>
+            </div>
+        </div>
+    </body>
+        <script>
+
+            // Show login/register containers
+            document.getElementById('toggle-to-register').addEventListener('click', function() {
+                showRegisterForm();
+            });
+
+            document.getElementById('toggle-to-login').addEventListener('click', function() {
+                showLoginForm();
+            });
+
+            function showRegisterForm() {
+                document.getElementById('form-title').textContent = 'Sign Up'; 
+                document.getElementById('login-form').style.display = 'none'; 
+                document.getElementById('register-form').style.display = 'block'; 
+            }
+
+            function showLoginForm() {
+                document.getElementById('form-title').textContent = 'Log In'; 
+                document.getElementById('login-form').style.display = 'block'; 
+                document.getElementById('register-form').style.display = 'none'; 
+            }
+
+            document.getElementById('toggle-login-register').addEventListener('click', function() {
+                toggleLoginRegister();
+                closeMenu(); 
+            });
+
+            document.getElementById('get-started').addEventListener('click', function() {
+                toggleLoginRegister();
+            });
+
+            function toggleLoginRegister() {
+                var loginRegister = document.getElementById('login-register');
+                var backdrop = document.getElementById('backdrop');
+
+                if (loginRegister.classList.contains('hidden')) {
+                    loginRegister.classList.remove('hidden'); 
+                    backdrop.classList.remove('hidden');
+                    setTimeout(function() {
+                        loginRegister.classList.add('visible');
+                        backdrop.classList.add('visible'); 
+                    }, 20); 
+                } else {
+                    loginRegister.classList.remove('visible'); 
+                    backdrop.classList.remove('visible');
+                    setTimeout(function() {
+                        loginRegister.classList.add('hidden'); 
+                        backdrop.classList.add('hidden');
+                    }, 400); 
+                }
+            }
+
+            // Menu visibility
+            document.getElementById('toggle-menu').addEventListener('click', function() {
+                var menu = document.getElementById('menu');
+
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden'); 
+                    setTimeout(function() {
+                        menu.classList.add('visible'); 
+                    }, 20); 
+                } else {
+                    menu.classList.remove('visible'); 
+                    setTimeout(function() {
+                        menu.classList.add('hidden'); 
+                    }, 400); 
+                }
+            });
+
+            function closeMenu() {
+                var menu = document.getElementById('menu');
+                if (!menu.classList.contains('hidden')) {
+                    menu.classList.remove('visible'); 
+                    setTimeout(function() {
+                        menu.classList.add('hidden'); 
+                    }, 400); 
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                var closeButtons = document.querySelectorAll('.close-button');
+                closeButtons.forEach(function(closeButton) {
+                    closeButton.addEventListener('click', function() {
+                        toggleLoginRegister(); 
+                    });
+                });
+            });
+
+            document.getElementById('login-submit').addEventListener('click', handleLogin);
+            document.getElementById('register-submit').addEventListener('click', handleRegister);
+
+            // Login validation
+            function handleLogin(event) {
+                event.preventDefault(); 
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-pass').value;
+
+                if (email && password) {
+                    
+                    loginUser(email, password);
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            }
+
+            // Register validation
+            function handleRegister(event) {
+                event.preventDefault(); 
+                const name = document.getElementById('register-name').value;
+                const email = document.getElementById('register-email').value;
+                const password = document.getElementById('register-pass').value;
+                const confirmPassword = document.getElementById('confirm-pass').value;
+
+                if (name && email && password && confirmPassword) {
+                    if (password === confirmPassword) {
+                        
+                        registerUser(name, email, password);
+                    } else {
+                        alert('Passwords do not match.');
+                    }
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            }
+
+            function loginUser(email, password) {
+                fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                })
+                .then(response => response.json())
+                .then(async data => {
+                    if (data.success) {
+                        
+                        sessionStorage.setItem('user_id', data.user_id); 
+                    
+                        window.location.href = data.redirect;  
+                    } else {
+                        alert('Login failed: ' + data.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+
+            function registerUser(fname, lname, email, password) {
+                fetch('/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ fname, lname, email, password })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Response Data:', data); 
+                    if (data.success) {
+                        alert('Registration successful! Please Log In.');
+                        showLoginForm()
+                    } else {
+                        alert('Registration failed: ' + data.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+
+            document.getElementById('register-submit').addEventListener('click', function(event) {
+                event.preventDefault();  
+                const fname = document.getElementById('register-fname').value;
+                const lname = document.getElementById('register-lname').value;
+                const email = document.getElementById('register-email').value;
+                const password = document.getElementById('register-pass').value;
+                const confirmPassword = document.getElementById('confirm-pass').value; 
+
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match. Please try again.'); 
+                    return; 
+                }
+            
+                registerUser(fname, lname, email, password); 
+            });
+
+        </script>
+</html>

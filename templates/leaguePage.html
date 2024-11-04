@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="../static/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <input type="hidden" id="userId" value=""> 
+        <div class="site-banner">
+            <div class="banner-content">
+                <h1>Sport's Predictions</h1>
+                <div class="site-banner-button" id="toggle-menu">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+        <div id="menu" class="hidden">
+            <div class="menu-buttons">
+                <button id="account-page-button" class="button">My Leagues</button>
+                <button id="logout-button" class="button">Sign Out</button>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="container">
+                <div id="teamInfo" class="user-team-info">
+                    <img class="user-team-logo" src="">
+                    <h1 class="team-name"><span class="team-name-text"></span> Predictions</h1> 
+                </div>
+                <h2>Season Stats</h2>
+                <div class="season-stat-container">
+                    <div class="season-stat-sections">
+                        <h1 class="season-points">183</h1> 
+                        <h3>POINTS</h3>
+                    </div>
+                    <div class="season-stat-sections">
+                        <h1 class="season-winners">22</h1> 
+                        <h3>WINNERS</h3>
+                    </div>
+                    <div class="season-stat-sections">
+                        <h1 class="season-wins">2</h1> 
+                        <h3>WINS</h3>
+                    </div>
+                    <div class="season-stat-sections">
+                        <h1 class="season-score">5</h1> 
+                        <h3>CORRECT SCORE</h3>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button type="button" id="toggle-season-stats">OPPONENT STATS <span class="caret"></span></button>
+                </div>
+                <div id="season-stats" class="hidden">
+                    <div id="opp-season-stats">
+                        
+                        <div class="opp-result-section">
+                            <span class="opp-team-name"></span>
+                            <span class="opp-team-points"></span> 
+                            <span class="opp-team-winners"></span> 
+                            <span class="opp-team-wins"></span> 
+                            <span class="opp-team-scores"></span> 
+                        </div>
+                    </div>
+                
+                    <div id="opp-season-template" style="display: none;">
+                        <div class="opp-result-section">
+                            <span class="opp-team-name"></span>
+                            <span class="opp-team-points"></span> 
+                            <span class="opp-team-winners"></span> 
+                            <span class="opp-team-wins"></span> 
+                            <span class="opp-team-scores"></span> 
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+                <section class="Carousel">
+                    <div class="Carousel__Wrapper">
+                        <button aria-hidden="false" tabindex="0" type="button" class="CarouselArrow CarouselArrow--left"><i class="fas fa-caret-left"></i></button>
+                        <button aria-hidden="false" tabindex="0" type="button" class="CarouselArrow CarouselArrow--right"><i class="fas fa-caret-right"></i></button>
+                        <div class="Carousel__Outer" role="listbox">
+                            <ul class="Carousel__Inner">
+                                
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(1)">
+                                    <div class="week-container">
+                                        <h4>Week 1</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(2)">
+                                    <div class="week-container">
+                                        <h4>Week 2</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(3)">
+                                    <div class="week-container">
+                                        <h4>Week 3</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(4)">
+                                    <div class="week-container">
+                                        <h4>Week 4</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(5)">
+                                    <div class="week-container">
+                                        <h4>Week 5</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(6)">
+                                    <div class="week-container">
+                                        <h4>Week 6</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(7)">
+                                    <div class="week-container">
+                                        <h4>Week 7</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(8)">
+                                    <div class="week-container">
+                                        <h4>Week 8</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(9)">
+                                    <div class="week-container">
+                                        <h4>Week 9</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(10)">
+                                    <div class="week-container">
+                                        <h4>Week 10</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(11)">
+                                    <div class="week-container">
+                                        <h4>Week 11</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(12)">
+                                    <div class="week-container">
+                                        <h4>Week 12</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(13)">
+                                    <div class="week-container">
+                                        <h4>Week 13</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(14)">
+                                    <div class="week-container">
+                                        <h4>Week 14</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(15)">
+                                    <div class="week-container">
+                                        <h4>Week 15</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(16)">
+                                    <div class="week-container">
+                                        <h4>Week 16</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(17)">
+                                    <div class="week-container">
+                                        <h4>Week 17</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(18)">
+                                    <div class="week-container">
+                                        <h4>Week 18</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(19)">
+                                    <div class="week-container">
+                                        <h4>Wild Card</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(20)">
+                                    <div class="week-container">
+                                        <h4>Divisional</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(21)">
+                                    <div class="week-container">
+                                        <h4>Championship</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                                <div class="CarouselSlide" aria-selected="false" onclick="onSlideClick(22)">
+                                    <div class="week-container">
+                                        <h4>Super Bowl</h4>
+                                        <p><span class="week-overview">0</span> POINTS</p> 
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <div class="week-result-container">
+                    <div class="week-result-section win-loss">
+                        <div class="win-loss-icon">
+                            <h4>LOSS</h4> 
+                        </div>
+                    </div>
+                
+                    <div class="week-result-section stats-section">
+                        <p>YOUR TEAM</p>
+                        <div class="points-stats">
+                            <div class="stat">
+                                <span class="stat-number user-points">43</span>
+                                <span class="stat-label-a">POINTS</span>
+                            </div>
+                            <div class="stat" style="border-left: 1px solid grey; padding-left: 10px;">
+                                <span class="stat-number user-winners">14</span>
+                                <span class="stat-label-a">WINNERS</span>
+                            </div>
+                            <div class="stat" style="border-left: 1px solid grey; padding-left: 10px;">
+                                <span class="stat-number user-scores">3</span>
+                                <span class="stat-label-a">CORRECT SCORES</span>
+                            </div>
+                        </div>
+                        <div class="button-container">
+                            <button type="button" id="toggle-advanced">OPPONENT STATS <span class="caret"></span></button>
+                        </div>
+                        <div id="advanced-search" class="hidden">
+                            <div id="opp-stats">
+                                
+                                <div class="opp-result-section">
+                                    <span class="opp-team-name"></span>
+                                    <span class="opp-team-points"></span> 
+                                    <span class="opp-team-winners"></span> 
+                                    <span class="opp-team-scores"></span> 
+                                </div>
+                            </div>
+                        
+                            <div id="opp-score-template" style="display: none;">
+                                <div class="opp-result-section">
+                                    <span class="opp-team-name"></span>
+                                    <span class="opp-team-points"></span> 
+                                    <span class="opp-team-winners"></span> 
+                                    <span class="opp-team-scores"></span> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="container">
+                <form id="prediction-form" onsubmit="checkFormFilled(event)">
+                    <div id="schedule"></div>
+                    <div id="matchup-template" class="matchup-wrapper" data-schedule-id="" style="display: none;">
+                        <div class="team-row">
+                            <div class="team-container team1">
+                                <div class="team-container-top">
+                                    <div class="team-info team1-info" style="background-color: grey">
+                                        <img class="team-logo team1-logo" src="">
+                                        <p class="team1-abv"></p>
+                                    </div>
+                                    <div class="score-prediction">
+                                        <div class="form-group">
+                                            <input type="text" class="team1-score-prediction textbox" name="score">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="team-container-actual-score">
+                                    <p class="team1-actual-score"></p>
+                                </div>
+                            </div>
+                            <div class="team-container team2">
+                                <div class="team-container-top">
+                                    <div class="team-info team2-info" style="background-color: grey">
+                                        <img class="team-logo team2-logo" src="">
+                                        <p class="team2-abv"></p>
+                                    </div>
+                                    <div class="score-prediction">
+                                        <div class="form-group">
+                                            <input type="text" class="team2-score-prediction textbox" name="score">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="team-container-actual-score">
+                                    <p class="team2-actual-score"></p>
+                                </div>
+                            </div>
+                            <p class="points">Points: <span class="points-value">0</span></p>
+                            <hr>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="submission-banner" class="hidden"> 
+                <div class="left">
+                    <button type="submit" class="button" id="submit-button">Submit Predictions</button>
+                </div>
+            </div>
+
+        </div>
+        <script>
+            let initialCurrentWeekId; 
+            let selectedWeekId;
+            let predictionsPresent = false;
+            const userId = sessionStorage.getItem('user_id'); 
+            const params = new URLSearchParams(window.location.search);
+            const leagueId = params.get('leagueId');
+
+            // Redirect to homepage if not logged in
+            if (!userId || !leagueId) {
+                window.location.href = '/';  
+            }
+
+            // Begin initial data fetching
+            document.addEventListener('DOMContentLoaded', fetchAndPopulateAllData);
+
+            async function fetchAndPopulateAllData() {
+                fetchTeamInfo(userId, leagueId);
+                fetchSeasonStats();
+                initializePage();
+                for (let weekId = 1; weekId <= 22; weekId++) {
+                    await fetchWeekStats(weekId); 
+                }
+            }
+
+            async function fetchTeamInfo(userId, leagueId) {
+                try {
+                    const response = await fetch('/api/fetch_team_info', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ user_id: userId, league_id: leagueId })
+                    });
+                
+                    if (!response.ok) {
+                        console.error('Failed to fetch team info');
+                        return;
+                    }
+                
+                    const data = await response.json();
+                    console.log('Fetched data:', data); 
+                    updateTeamInfo(data.team_name, data.team_picture);
+
+                } catch (error) {
+                    console.error('Error fetching team info:', error);
+                }
+            }
+
+            function updateTeamInfo(teamName, teamPicture) {
+                console.log('Team Name:', teamName); 
+                const teamNameTextElement1 = document.querySelector('#teamInfo .team-name-text');
+                if (teamNameTextElement1) {
+                    teamNameTextElement1.innerText = teamName; 
+                } else {
+                    console.error('team-name-text element not found in #teamInfo');
+                }
+
+                const teamNameTextElement2 = document.querySelector('.team-name p .team-name-text'); 
+                if (teamNameTextElement2) {
+                    teamNameTextElement2.innerText = teamName; 
+                } else {
+                    console.error('team-name-text element not found in second team-name location');
+                }
+            
+                const teamPictureElement = document.querySelector('#teamInfo .user-team-logo'); 
+                if (teamPictureElement) {
+                    teamPictureElement.setAttribute('src', teamPicture);
+                } else {
+                    console.error('user-team-logo element not found');
+                }
+            }
+
+            let lockPredictionsTime; 
+            let isLockPredictionsTimeSet = false;
+
+            async function fetchCurrentWeekId() {
+                let current_week_id; 
+                try {
+                    const response = await fetch('/api/get_current_week'); 
+                    if (!response.ok) throw new Error('Failed to fetch current week');
+                    const data = await response.json();
+                    current_week_id = data.current_week_id; 
+                    initialCurrentWeekId = data.current_week_id; 
+                    if (!isLockPredictionsTimeSet) {
+                        lockPredictionsTime = data.lock_predictions_time;
+                        isLockPredictionsTimeSet = true; 
+                    }
+
+                } catch (error) {
+                    console.error('Error fetching current week ID:', error);
+                }
+
+                if (current_week_id) {
+                    onSlideClick(current_week_id, current_week_id); 
+                }
+            }
+
+            // Menu visibility
+            document.getElementById('toggle-menu').addEventListener('click', function() {
+                var menu = document.getElementById('menu');
+
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden'); 
+                    setTimeout(function() {
+                        menu.classList.add('visible'); 
+                    }, 20); 
+                } else {
+                    menu.classList.remove('visible'); 
+                    setTimeout(function() {
+                        menu.classList.add('hidden'); 
+                    }, 400); 
+                }
+            });
+
+            // Week slides functionality/visibility
+            let currentIndex = 0;
+            const slides = document.querySelectorAll('.CarouselSlide');
+            const totalSlides = slides.length;
+
+            function getVisibleSlides() {
+                const carouselOuter = document.querySelector('.Carousel__Outer');
+                const carouselWidth = carouselOuter.offsetWidth; 
+                const slideWidth = slides[0].offsetWidth + 8; 
+                return Math.floor(carouselWidth / slideWidth); 
+            }
+
+            function updateCarousel() {
+                const visibleSlides = getVisibleSlides(); 
+                const offset = -currentIndex * (slides[0].offsetWidth + 8); 
+                const centerOffset = (visibleSlides > 1) ? (visibleSlides - 1) / 2 : 0; 
+                const adjustmentFactor = 0.87; 
+                document.querySelector('.Carousel__Inner').style.transform = `translateX(${offset + (centerOffset * (slides[0].offsetWidth + 8)) * adjustmentFactor}px)`;
+            }
+
+            document.querySelector('.CarouselArrow--left').addEventListener('click', () => {
+                currentIndex = Math.max(0, currentIndex - 1);
+                updateCarousel();
+            });
+
+            document.querySelector('.CarouselArrow--right').addEventListener('click', () => {
+                currentIndex = Math.min(totalSlides - 1, currentIndex + 1);
+                updateCarousel();
+            });
+
+            async function initializePage() {
+                const currentWeekId = await fetchCurrentWeekId(); 
+                if (currentWeekId) {
+                    currentIndex = currentWeekId - 1; 
+                    updateCarousel(); 
+                    onSlideClick(currentWeekId); 
+                }
+            }
+
+            const submissionBanner = document.getElementById('submission-banner');
+
+            // Begin week data update from slide click
+            function onSlideClick(weekId, currentWeekId) { 
+                if (!userId) {
+                    console.error('User ID not found in session storage.');
+                    return; 
+                }
+            
+                console.log("weekId:", weekId, "currentWeekId:", initialCurrentWeekId); 
+                document.querySelectorAll('.week-container').forEach(container => {
+                    container.classList.remove('clicked');
+                });
+
+                const clickedContainer = document.querySelector(`.CarouselSlide[onclick="onSlideClick(${weekId})"] .week-container`);
+                if (clickedContainer) {
+                    clickedContainer.classList.add('clicked');
+                }
+
+                currentIndex = weekId - 1; 
+                updateCarousel(); 
+
+                fetchSlideData(userId, weekId, leagueId)
+                    .catch(error => {
+                        console.error('Error fetching slide data:', error);
+                    });
+
+                fetchOppData(userId, weekId, leagueId)
+                    .catch(error => {
+                        console.error('Error fetching opp data:', error);
+                    });
+
+                if (weekId === initialCurrentWeekId && new Date() < new Date(lockPredictionsTime)) {
+                    submissionBanner.classList.remove('hidden');
+                } else {
+                    submissionBanner.classList.add('hidden');
+                }
+
+                selectedWeekId = weekId;
+            }
+
+            let startEndTimes = [];
+
+            async function getStartEndTimes() {
+                const response = await fetch('/api/start_end_times');
+                const times = await response.json();
+
+                startEndTimes = times.map(range => ({
+                    start: new Date(range[0]),  
+                    end: new Date(range[1])     
+                }));
+            }
+
+            function shouldRunFetch() {
+                const now = new Date();  
+                return startEndTimes.some(range => range.start <= now && now <= range.end);
+            }
+
+            async function runFetchIfInTime(userId, weekId, leagueId) {
+                if (shouldRunFetch()) {
+                    await fetchSlideData(userId, weekId, leagueId);  
+                }
+            }
+
+            async function fetchSlideData(userId, weekId, leagueId) {
+                try {
+                    console.log('User ID:', userId);
+                    console.log('Week ID:', weekId);
+                    console.log('League ID:', leagueId);
+                
+                    const response = await fetch('/api/fetch_slide_data', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ user_id: userId, week_id: weekId, league_id: leagueId })
+                    });
+                
+                    if (!response.ok) {
+                        console.error('Failed to fetch slide data');
+                        return { actualScores: {}, predictedScores: {}, predictionsPresent: false }; 
+                    }
+                
+                    const data = await response.json();
+                    console.log('Fetched data:', data);  
+                    updateSlideContent(data.week_nfl_schedule, data.actual_scores, data.prediction_scores, data.nfl_team_info, weekId);
+                    predictionsPresent = data.prediction_scores && Object.keys(data.prediction_scores).length > 0;
+
+                    return {
+                        actualScores: data.actual_scores,
+                        predictedScores: data.prediction_scores,
+                        predictionsPresent: predictionsPresent 
+                    };
+                } catch (error) {
+                    console.error('Error fetching slide data:', error);
+                    return { actualScores: {}, predictedScores: {}, predictionsPresent: false }; 
+                }
+            }
+
+            async function fetchOppData(userId, weekId, leagueId) {
+                try {
+                    console.log('User ID:', userId);
+                    console.log('Week ID:', weekId);
+                    console.log('League ID:', leagueId);
+                
+                    const response = await fetch('/api/fetch_opp_data', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ user_id: userId, week_id: weekId, league_id: leagueId })
+                    });
+                
+                    const data = await response.json();
+                    console.log('Fetched data:', data);  
+                    updateOppWeekStats(data.opp_points, data.opp_name);
+            
+                } catch (error) {
+                    console.error('Error fetching slide data:', error);
+                }
+            }
+
+            window.onload = async function() {
+                await getStartEndTimes();  
+
+                setInterval(() => {
+                    runFetchIfInTime(userId, weekId, leagueId);  
+                }, 300000);  
+            }
+
+            // Two digit number only
+            function restrictInput(event) {
+                const input = event.target;
+                input.value = input.value.replace(/\D/g, '').slice(0, 2);
+            }
+
+            function updateSlideContent(weekSchedule, actualScores, predictedScores, nflTeamInfo, weekId) {
+                const scheduleContainer = document.getElementById('schedule');
+                scheduleContainer.innerHTML = '';  
+
+                const stats = [];
+                        
+                weekSchedule.forEach((game) => {
+                    const matchupElement = document.getElementById('matchup-template').cloneNode(true);
+                    matchupElement.style.display = 'flex';  
+                
+                    const scheduleId = game[0];
+                    const team1Abv = game[2];  
+                    const team2Abv = game[3];  
+
+                    matchupElement.setAttribute('data-schedule-id', scheduleId);
+                    matchupElement.querySelector('.team1-abv').innerText = team1Abv;
+                    matchupElement.querySelector('.team2-abv').innerText = team2Abv;
+
+                    const team1Info = nflTeamInfo.find(team => team[0] === team1Abv);
+                    const team2Info = nflTeamInfo.find(team => team[0] === team2Abv);
+
+                    if (team1Info) {
+                        matchupElement.querySelector('.team1-logo').src = team1Info[1];  
+                        matchupElement.querySelector('.team1-info').style.backgroundColor = `#${team1Info[2]}`;  
+                    } else {
+                        console.warn(`No information found for team: ${team1Abv}`);
+                    }
+                
+                    if (team2Info) {
+                        matchupElement.querySelector('.team2-logo').src = team2Info[1];  
+                        matchupElement.querySelector('.team2-info').style.backgroundColor = `#${team2Info[2]}`;  
+                    } else {
+                        console.warn(`No information found for team: ${team2Abv}`);
+                    }
+
+                    const actualScore = actualScores.find(score => score[0] === game[0]);
+                    const team1Container = matchupElement.querySelector('.team-container.team1');
+                    const team2Container = matchupElement.querySelector('.team-container.team2');
+                    const team1ActualContainer = matchupElement.querySelector('.team1-actual-score').parentElement; 
+                    const team2ActualContainer = matchupElement.querySelector('.team2-actual-score').parentElement; 
+    
+                    if (actualScore) {
+                        matchupElement.querySelector('.team1-actual-score').innerText = actualScore[1];
+                        matchupElement.querySelector('.team2-actual-score').innerText = actualScore[2];
+                        team1ActualContainer.style.display = 'block'; 
+                        team2ActualContainer.style.display = 'block'; 
+                    } else {
+                        matchupElement.querySelector('.team1-actual-score').innerText = '';
+                        matchupElement.querySelector('.team2-actual-score').innerText = '';
+                        team1ActualContainer.style.display = 'none'; 
+                        team2ActualContainer.style.display = 'none'; 
+                    }
+
+                    const predictedScore = predictedScores.find(score => score[0] === game[0]);
+                    const team1PredictionElement = matchupElement.querySelector('.team1-score-prediction');
+                    const team2PredictionElement = matchupElement.querySelector('.team2-score-prediction');
+
+                    if (predictedScore) {
+                        team1PredictionElement.value = predictedScore[1];
+                        team2PredictionElement.value = predictedScore[2];
+                        team1PredictionElement.setAttribute('readonly', true);
+                        team2PredictionElement.setAttribute('readonly', true);
+                        team1PredictionElement.style.backgroundColor = '#d3d3d3'; 
+                        team1PredictionElement.style.color = '#6e6e6e'; 
+                        team2PredictionElement.style.backgroundColor = '#d3d3d3';
+                        team2PredictionElement.style.color = '#6e6e6e';
+                    } else {
+                        team1PredictionElement.value = '';
+                        team2PredictionElement.value = '';
+                        team1PredictionElement.removeAttribute('readonly');
+                        team2PredictionElement.removeAttribute('readonly');
+                        team1PredictionElement.addEventListener('input', restrictInput);
+                        team2PredictionElement.addEventListener('input', restrictInput);
+                    }
+
+                    if (actualScore && predictedScore) {
+                        team1PredictionElement.classList.remove('correct-prediction');
+                        team2PredictionElement.classList.remove('correct-prediction');
+
+                        if (predictedScore[1] === actualScore[1]) {
+                            console.log('Team 1 score matches!');
+                            team1PredictionElement.style.cssText = ''; 
+                            team1PredictionElement.classList.add('correct-prediction');
+                        }
+                    
+                        if (predictedScore[2] === actualScore[2]) {
+                            console.log('Team 2 score matches!');
+                            team2PredictionElement.style.cssText = ''; 
+                            team2PredictionElement.classList.add('correct-prediction');
+                        }
+                    }
+
+                    const points = calculatePoints(actualScore, predictedScore, team1Container, team2Container, team1ActualContainer, team2ActualContainer);
+                    matchupElement.querySelector('.points-value').innerText = points.totalPoints;
+
+                    stats.push({
+                        schedule_id: scheduleId,
+                        points: points.totalPoints,
+                        correct_score: points.correctScore ? 1 : 0, 
+                        winner_correct: points.correctWinner ? 1 : 0 
+                    });
+
+                    scheduleContainer.appendChild(matchupElement);
+                });
+
+                handleScoreUpdate(weekId, stats);
+                fetchWeekStats(weekId);
+            }
+
+            function updateOppWeekStats(oppPoints, oppName) {
+                const oppContainer = document.getElementById('opp-stats');
+                oppContainer.innerHTML = '';  
+                const titleRow = document.createElement('div');
+                titleRow.classList.add('opp-result-header');  
+                titleRow.innerHTML = `
+                    <span class="opp-header-team-name">Team</span>
+                    <span class="opp-header-team-points">Points</span>
+                    <span class="opp-header-team-winners">Winners</span>
+                    <span class="opp-header-team-scores">Correct Scores</span>
+                `;
+                oppContainer.appendChild(titleRow);  
+
+                let currentRow;  
+                oppName.forEach((team, index) => {
+                    if (index % 2 === 0) {
+                        currentRow = document.createElement('div');
+                        currentRow.classList.add('opp-row');  
+                        oppContainer.appendChild(currentRow);
+                    }
+                
+                    const matchupElement = document.getElementById('opp-score-template').cloneNode(true);
+                    matchupElement.style.display = 'flex';  
+                    const oppUserId = team[0];
+                    const oppTeamName = team[1];
+                    matchupElement.querySelector('.opp-team-name').innerText = oppTeamName;
+                    const oppTeamPoints = oppPoints.find(points => points[0] === oppUserId);
+                    const pointsElement = matchupElement.querySelector('.opp-team-points');
+                    const winnersElement = matchupElement.querySelector('.opp-team-winners');
+                    const scoresElement = matchupElement.querySelector('.opp-team-scores');
+                    const teamContainer = pointsElement.parentElement;
+                
+                    if (oppTeamPoints) {
+                        pointsElement.innerText = oppTeamPoints[1];
+                        winnersElement.innerText = oppTeamPoints[2];
+                        scoresElement.innerText = oppTeamPoints[3];
+                        teamContainer.style.display = 'flex';  
+                    } else {
+                        teamContainer.style.display = 'none';  
+                    }
+                
+                    currentRow.appendChild(matchupElement);
+                });
+
+                if (oppName.length % 2 !== 0) {
+                    const blankPlaceholder = document.createElement('div');
+                    blankPlaceholder.classList.add('opp-result-section');  
+                    blankPlaceholder.style.visibility = 'hidden';  
+                    currentRow.appendChild(blankPlaceholder);
+                }
+            }
+
+            document.getElementById('submit-button').addEventListener('click', function(event) {
+                event.preventDefault();  
+                checkFormFilled();       
+            });
+
+            // Form filled validation
+            function checkFormFilled() {
+                const form = document.getElementById('prediction-form');
+                const textboxes = form.querySelectorAll('input[type="text"]');
+                const totalTextboxes = textboxes.length;
+                const requiredFilledCount = totalTextboxes - 2; 
+                const filledTextboxes = Array.from(textboxes).filter(textbox => textbox.value.trim() !== '');
+                
+                if (filledTextboxes.length < requiredFilledCount) {
+                    alert('Please fill in remaining predictions before submitting.');
+                    textboxes.forEach(textbox => {
+                        if (textbox.value.trim() === '') {
+                            textbox.classList.add('error');
+                        } else {
+                            textbox.classList.remove('error');
+                        }
+                    });
+                } else if (selectedWeekId < initialCurrentWeekId || new Date() > new Date(lockPredictionsTime)) {
+                    alert('Submissions for this week have closed.');
+                } else if (selectedWeekId > initialCurrentWeekId) {
+                    alert('Submissions for this have not opened.');
+                } else if (predictionsPresent) { 
+                    alert('Submissions for this week are locked.');
+                } else {
+                    console.log('All fields are filled. Proceeding with submission.'); 
+                    submitForm();  
+                }
+            }
+
+            async function submitForm() {
+                const form = document.getElementById('prediction-form');
+                const matchups = document.querySelectorAll('.matchup-wrapper');
+                const predictions = [];
+
+                matchups.forEach((matchup) => {
+                    if (matchup.style.display !== 'none') {
+                        const schedule_id = matchup.getAttribute('data-schedule-id');
+                        const p_score_team_1 = matchup.querySelector('.team1-score-prediction').value;
+                        const p_score_team_2 = matchup.querySelector('.team2-score-prediction').value;
+                        predictions.push({
+                            schedule_id: schedule_id,
+                            p_score_team_1: p_score_team_1,
+                            p_score_team_2: p_score_team_2
+                        });
+                    }
+                });
+
+                const formData = {
+                    user_id: userId,  
+                    league_id: leagueId,  
+                    predictions: predictions  
+                };
+            
+                console.log('Submitting form data:', formData);  
+            
+                try {
+                    const response = await fetch('/prediction-submital', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+                    }
+                
+                    const result = await response.json();
+                    console.log('Submission response:', result);  
+                
+                    if (result.success) {
+                        alert('Data submitted successfully!');
+                        matchups.forEach((matchupElement) => {
+                            matchupElement.querySelector('.team1-score-prediction').setAttribute('readonly', true);
+                            matchupElement.querySelector('.team2-score-prediction').setAttribute('readonly', true);
+                        });
+
+                        submissionBanner.classList.add('hidden');
+
+                        location.reload();
+                    } else {
+                        alert('Error submitting data: ' + result.message);
+                    }
+                } catch (error) {
+                    alert('Error submitting data: ' + error.message);
+                }
+            }
+
+            // Calculate weekly points
+            function calculatePoints(actualScore, predictedScore, team1Container, team2Container, team1ActualContainer, team2ActualContainer) {
+                const matchupElement = document.getElementById('matchup-template').cloneNode(true);
+                
+                if (typeof predictedScore === 'undefined') {
+                    return { totalPoints: 0, correctScore: false, correctWinner: false };
+                }
+
+                let totalPoints = 0;
+                let correctScore = false;
+                let correctWinner = false;
+
+                if (typeof actualScore === 'undefined') {
+                    
+                    team1Container.classList.remove('selected-winner', 'correct-winner', 'incorrect-winner');
+                    team2Container.classList.remove('selected-winner', 'correct-winner', 'incorrect-winner');
+
+                    if (predictedScore[1] > predictedScore[2]) {
+                        team1Container.classList.add('selected-winner'); 
+                    } else if (predictedScore[1] < predictedScore[2]) {
+                        team2Container.classList.add('selected-winner'); 
+                    } else if (predictedScore[1] === predictedScore[2]) {
+                        team2Container.classList.add('selected-winner'); 
+                        team1Container.classList.add('selected-winner');
+                    }
+
+                    return { totalPoints, correctScore, correctWinner };
+                }
+
+                let diffTeam1 = Math.abs(actualScore[1] - predictedScore[1]);
+                let diffTeam2 = Math.abs(actualScore[2] - predictedScore[2]);
+                let winnerActual;
+                let winnerPredicted;
+
+                if (actualScore[1] > actualScore[2]) {
+                    winnerActual = 'away';
+                } else if (actualScore[1] < actualScore[2]) {
+                    winnerActual = 'home';
+                } else {
+                    winnerActual = 'tie';
+                }
+
+                if (predictedScore[1] > predictedScore[2]) {
+                    winnerPredicted = 'away';
+                } else if (predictedScore[1] < predictedScore[2]) {
+                    winnerPredicted = 'home';
+                } else {
+                    winnerPredicted = 'tie';
+                }
+
+                function calculatePointsForDiff(diff) {
+                    let correctScore = false;
+                    if (diff === 0) {
+                        correctScore = true;
+                        return { points: 4, correctScore };
+                    } 
+                    if (diff === 3 || diff === 7) {
+                        return { points: 2, correctScore };
+                    } 
+                    if (diff === 6 || diff === 8) {
+                        return { points: 1, correctScore };
+                    } 
+                    if (diff === 1 || diff === 2 || diff === 4 || diff === 5) {
+                        return { points: 0.5, correctScore };
+                    }
+                    return { points: 0, correctScore };
+                }
+            
+                function calculatePointsForWinner(winA, winP) {
+                    let correctWinner = false;
+                    if (winA === 'tie' && winP === 'tie') {
+                        correctWinner = true;
+                        return { points: 4, correctWinner };
+                    } else if (winA === 'tie') {
+                        return { points: 1, correctWinner };
+                    } else if (winA === winP) {
+                        correctWinner = true;
+                        return { points: 2, correctWinner };
+                    }
+                    return { points: 0, correctWinner };
+                }
+
+                let pointsTeam1 = calculatePointsForDiff(diffTeam1);
+                let pointsTeam2 = calculatePointsForDiff(diffTeam2);
+                let pointsWinner = calculatePointsForWinner(winnerActual, winnerPredicted);
+
+                team1Container.classList.remove('selected-winner', 'correct-winner', 'incorrect-winner');
+                team2Container.classList.remove('selected-winner', 'correct-winner', 'incorrect-winner');
+                team1ActualContainer.classList.remove('correct-winner', 'incorrect-winner');
+                team2ActualContainer.classList.remove('correct-winner', 'incorrect-winner');
+            
+                if (winnerActual === winnerPredicted) {
+                    if (winnerActual === 'away') {
+                        team1Container.classList.add('correct-winner');
+                        team1ActualContainer.classList.add('correct-winner');
+                    } else if (winnerActual === 'home') {
+                        team2Container.classList.add('correct-winner');
+                        team2ActualContainer.classList.add('correct-winner');
+                    } else if (winnerActual === 'tie') {
+                        team2Container.classList.add('correct-winner');
+                        team2ActualContainer.classList.add('correct-winner');
+                        team1Container.classList.add('correct-winner');
+                        team1ActualContainer.classList.add('correct-winner');
+                    }
+                } else {
+                    if (winnerActual === 'away') {
+                        team2Container.classList.add('incorrect-winner');
+                        team2ActualContainer.classList.add('incorrect-winner');
+                    } else if (winnerActual === 'home') {
+                        team1Container.classList.add('incorrect-winner');
+                        team1ActualContainer.classList.add('incorrect-winner');
+                    } else if (winnerActual === 'tie') {
+                        team2Container.classList.add('incorrect-winner');
+                        team2ActualContainer.classList.add('incorrect-winner');
+                        team1Container.classList.add('incorrect-winner');
+                        team1ActualContainer.classList.add('incorrect-winner');
+                    }
+                }
+            
+                return {
+                    totalPoints: pointsTeam1.points + pointsTeam2.points + pointsWinner.points,
+                    correctScore: pointsTeam1.correctScore || pointsTeam2.correctScore,
+                    correctWinner: pointsWinner.correctWinner
+                };
+            }
+
+            function handleScoreUpdate(weekID, stats) {
+                const formData = {
+                    user_id: userId,  
+                    league_id: leagueId,  
+                    week_id: weekID,
+                    stats: stats  
+                };
+
+                fetch('/api/save_matchup_stats', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+
+            async function fetchWeekStats(weekId) {
+                const formData = {
+                    user_id: userId,  
+                    league_id: leagueId,  
+                    week_id: weekId
+                };
+
+                try {
+                    const response = await fetch('/api/fetch_week_stats', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    if (!response.ok) {
+                        console.error('Failed to fetch team info');
+                        return;
+                    }
+
+                    const data = await response.json();
+                    console.log('Fetched data:', data); 
+
+                    updateWeekStats(data.points, data.winner_correct, data.correct_score, data.win);
+                    updateCarouselPoints(weekId, data.points);
+
+                } catch (error) {
+                    console.error('Error fetching team info:', error);
+                }
+            }
+
+            function updateWeekStats(points, winnerCorrect, correctScore, win) {
+                const weekPointElement = document.querySelector('.user-points');
+                if (weekPointElement) {
+                    
+                    weekPointElement.innerText = parseFloat(points).toLocaleString(undefined, {
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 1 
+                    });
+                } else {
+                    console.error('user-points home element not found');
+                }
+            
+                const weekWinnerElement = document.querySelector('.user-winners'); 
+                if (weekWinnerElement) {
+                    
+                    weekWinnerElement.innerText = winnerCorrect; 
+                } else {
+                    console.error('user-winners home element not found');
+                }
+
+                const weekCorrectElement = document.querySelector('.user-scores'); 
+                if (weekCorrectElement) {
+                    
+                    weekCorrectElement.innerText = correctScore; 
+                } else {
+                    console.error('user-scores home element not found');
+                }
+
+                const weekWinLossElement = document.querySelector('.win-loss-icon'); 
+                if (weekWinLossElement) {
+                    if (win === true) {
+                        weekWinLossElement.innerText = 'WIN';
+                        weekWinLossElement.classList.add('win');
+                        weekWinLossElement.classList.remove('loss');
+                        weekWinLossElement.classList.remove('null'); 
+                    } else if (win === false) {
+                        weekWinLossElement.innerText = 'LOSS';
+                        weekWinLossElement.classList.add('loss'); 
+                        weekWinLossElement.classList.remove('win');
+                        weekWinLossElement.classList.remove('null');
+                    } else if (win === null) {
+                        weekWinLossElement.innerText = '\u2014';
+                        weekWinLossElement.classList.add('null'); 
+                        weekWinLossElement.classList.remove('win');
+                        weekWinLossElement.classList.remove('loss');
+                    }
+                } else {
+                    console.error('user-scores home element not found');
+                }
+                fetchSeasonStats();
+            }
+
+            async function fetchSeasonStats() {
+                const formData = {
+                    user_id: userId,  
+                    league_id: leagueId,  
+                };
+
+                try {
+                    const response = await fetch('/api/fetch_season_stats', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    if (!response.ok) {
+                        console.error('Failed to fetch season stats');
+                        return;
+                    }
+
+                    const data = await response.json();
+                    console.log('Fetched data:', data); 
+
+                    updateSeasonStats(data.points, data.winner_correct, data.correct_score, data.wins, data.opp_season_stats, data.opp_name);
+
+                } catch (error) {
+                    console.error('Error fetching season stats:', error);
+                }
+            }
+
+            function updateSeasonStats(points, winnerCorrect, correctScore, wins, oppSeasonStats, oppName) {
+                const seasonPointElement = document.querySelector('.season-points'); 
+                const oppSeasonContainer = document.getElementById('opp-season-stats');
+                oppSeasonContainer.innerHTML = '';  
+
+                if (seasonPointElement) {
+                    
+                    seasonPointElement.innerText = parseFloat(points).toLocaleString(undefined, {
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 1 
+                    });
+                } else {
+                    console.error('season-points home element not found');
+                }
+            
+                const seasonWinnerElement = document.querySelector('.season-winners'); 
+                if (seasonWinnerElement) {
+                    
+                    seasonWinnerElement.innerText = winnerCorrect; 
+                } else {
+                    console.error('season-winners home element not found');
+                }
+
+                const seasonWinsElement = document.querySelector('.season-wins'); 
+                if (seasonWinsElement) {
+                    
+                    seasonWinsElement.innerText = wins; 
+                } else {
+                    console.error('season-winners home element not found');
+                }
+
+                const seasonCorrectElement = document.querySelector('.season-score'); 
+                if (seasonCorrectElement) {
+                    
+                    seasonCorrectElement.innerText = correctScore; 
+                } else {
+                    console.error('season-scores home element not found');
+                }
+
+                const titleRow = document.createElement('div');
+                titleRow.classList.add('opp-result-header');  
+                titleRow.innerHTML = `
+                    <span class="opp-header-team-name">Team</span>
+                    <span class="opp-header-team-points">Points</span>
+                    <span class="opp-header-team-winners">Winners</span>
+                    <span class="opp-header-team-wins">Wins</span>
+                    <span class="opp-header-team-scores">Correct Scores</span>
+                `;
+
+                oppSeasonContainer.appendChild(titleRow);  
+
+                let currentRow;  
+                oppName.forEach((team, index) => {
+                    if (index % 2 === 0) {
+                        
+                        currentRow = document.createElement('div');
+                        currentRow.classList.add('opp-row');  
+                        oppSeasonContainer.appendChild(currentRow);
+                    }
+                
+                    const matchupElement = document.getElementById('opp-season-template').cloneNode(true);
+                    matchupElement.style.display = 'flex';  
+                
+                    const oppUserId = team[0];
+                    const oppTeamName = team[1];
+
+                    matchupElement.querySelector('.opp-team-name').innerText = oppTeamName;
+
+                    const oppTeamPoints = oppSeasonStats.find(points => points[0] === oppUserId);
+                
+                    const pointsElement = matchupElement.querySelector('.opp-team-points');
+                    const winnersElement = matchupElement.querySelector('.opp-team-winners');
+                    const winsElement = matchupElement.querySelector('.opp-team-wins');
+                    const scoresElement = matchupElement.querySelector('.opp-team-scores');
+                    const teamContainer = pointsElement.parentElement;
+                
+                    if (oppTeamPoints) {
+                        
+                        pointsElement.innerText = oppTeamPoints[1];
+                        winnersElement.innerText = oppTeamPoints[2];
+                        winsElement.innerText = oppTeamPoints[3];
+                        scoresElement.innerText = oppTeamPoints[4];
+                        teamContainer.style.display = 'flex';  
+                    } else {
+                        
+                        teamContainer.style.display = 'none';  
+                    }
+                
+                    currentRow.appendChild(matchupElement);
+                });
+
+                if (oppName.length % 2 !== 0) {
+                    const blankPlaceholder = document.createElement('div');
+                    blankPlaceholder.classList.add('opp-result-section');  
+                    blankPlaceholder.style.visibility = 'hidden';  
+                    currentRow.appendChild(blankPlaceholder);
+                }
+            }
+
+            function updateCarouselPoints(weekId, points) {
+                
+                const weekPointElement = document.querySelector(`.CarouselSlide[onclick="onSlideClick(${weekId})"] .week-overview`);
+                if (weekPointElement) {
+                    
+                    weekPointElement.innerText = parseFloat(points).toLocaleString(undefined, {
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 1 
+                    });
+                } else {
+                    console.error(`Week ${weekId} element not found for update.`);
+                }
+            }
+
+            document.getElementById('toggle-advanced').addEventListener('click', function() {
+                var advancedSection = document.getElementById('advanced-search');
+
+                if (advancedSection.classList.contains('hidden')) {
+                    advancedSection.classList.remove('hidden'); 
+                    setTimeout(function() {
+                        advancedSection.classList.add('visible'); 
+                    }, 20); 
+                } else {
+                    advancedSection.classList.remove('visible'); 
+                    setTimeout(function() {
+                        advancedSection.classList.add('hidden'); 
+                    }, 400); 
+                }
+            });
+
+            document.getElementById('toggle-season-stats').addEventListener('click', function() {
+                var seasonStats = document.getElementById('season-stats');
+
+                if (seasonStats.classList.contains('hidden')) {
+                    seasonStats.classList.remove('hidden'); 
+                    setTimeout(function() {
+                        seasonStats.classList.add('visible'); 
+                    }, 20); 
+                } else {
+                    seasonStats.classList.remove('visible'); 
+                    setTimeout(function() {
+                        seasonStats.classList.add('hidden'); 
+                    }, 400); 
+                }
+            });
+
+            // Logout function
+            function logout() { 
+                sessionStorage.removeItem('user_id');
+                sessionStorage.removeItem('league_id');
+                window.location.href = '/';
+            }
+
+            function accountPage() {
+                window.location.href = '/accountPage';
+            }
+
+            document.getElementById('logout-button').addEventListener('click', logout);
+            document.getElementById('account-page-button').addEventListener('click', accountPage);
+
+        </script>
+    </body>
+</html>

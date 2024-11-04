@@ -1,0 +1,1144 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.button {
+    background-color: transparent;
+    border: 1px solid;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 15px; 
+    padding-left: clamp(30px, 6vw, 60px);
+    padding-right: clamp(30px, 6vw, 60px);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.close-button {
+    position: absolute; 
+    top: 10px; 
+    right: 15px; 
+    font-size: 24px; 
+    cursor: pointer; 
+}
+  
+.wrapper {
+    background-color: rgb(24, 24, 24);
+    margin: auto;              
+    display: grid;
+    justify-items: center;
+    min-height: 100vh;
+    height: auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.site-banner {
+    position: fixed;
+    top: 0;
+    background-color: rgb(40, 40, 40);
+    height: 60px;
+    z-index: 1000;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px;
+    left: 0;
+    right: 0;
+}
+
+.banner-content {
+    width: 100%;
+    max-width: 1260px; 
+    margin: 0 auto;
+    background-color: rgb(40, 40, 40);
+    color: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.site-banner h1 {
+    margin-left: 20px;
+    font-style: italic;
+    position: relative; 
+}
+
+.site-banner-button {
+    margin-right: 20px;
+    position: relative; 
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.site-banner-button .line {
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.site-banner-button:hover .line {
+    background-color: #939393;
+}
+
+#menu {
+    margin-top: 60px;
+    padding: 15px;
+    background-color: rgb(187, 187, 187, .95);
+    top: 0;
+    z-index: 99;
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px;
+    transform: translateY(-100%);
+    transition: transform 400ms ease;
+}
+
+#menu.visible {
+    transform: translateY(0)
+}
+
+#menu.hidden {
+    display: none;
+}
+
+.menu-buttons {
+    right: 22vw;
+    position: fixed;
+}
+
+#menu .button {
+    border-color: rgb(35, 88, 186);
+    color: rgb(35, 88, 186);
+    margin-left: 10px;
+}
+
+#menu .button:hover,
+#login-register .button:hover,
+#login-register1 .button:hover {
+    background-color: rgba(6, 93, 159, 0.261);
+}
+
+#login-register .button,
+#login-register1 .button {
+    border-color: rgb(35, 88, 186);
+    color: rgb(35, 88, 186);
+    display: inline-block;
+    align-items: center;
+    margin: 0 auto 20px;
+    width: 300px;
+}
+
+#login-register,
+#login-register1 {
+    padding: 15px 25px;
+    background-color: rgb(187, 187, 187, .95);
+    z-index: 100;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 400ms ease;
+    visibility: hidden;
+    width: clamp(300px, 30vw, 600px);
+    border-radius: 5px;
+    height: auto;
+    max-height: calc(100vh - 100px); 
+    overflow-y: auto; 
+    margin: auto;
+    top: 80px;
+    bottom: 20px;
+}
+
+#login-form,
+#register-form,
+#create-league-form,
+#join-league-form {
+    justify-content: center;
+    align-self: center;
+    padding-top: 20px; 
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+
+#login-register.visible,
+#login-register1.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#login-register.hidden,
+#login-register1.hidden {
+    visibility:hidden;
+}
+
+#register-form {
+    display: none;
+}
+
+#login-register h2,
+#login-register1 h2 {
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+    color: black;
+}
+
+#login-register p,
+#login-register1 p {
+    text-align: center;
+    font-style: italic;
+}
+
+#login-register input,
+#login-register1 input {
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 400ms ease;
+    z-index: 50; 
+}
+
+#backdrop.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#home-page-content {
+    display: flex;
+    margin-top: -200px;
+    gap: 10px;
+    align-items: center;
+    text-align: left;
+    margin: 10px 30px;
+}
+
+.home-page-text {
+    color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: 500px;
+}
+
+.home-page-text h1 {
+    font-size: 52px;
+    line-height: 60px;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.home-page-text p {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 26px;
+    margin-bottom: 30px;
+}
+
+.home-page-text button {
+    color: black;
+    background-color: white;
+}
+
+.home-page-graphic {
+    display: block; 
+    margin: 0 auto; 
+    position: relative;
+    z-index: 1;
+    width: clamp(300px, 45vw, 600px);
+    height: auto;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.shadow-container {
+    position: relative; 
+    display: inline-block; 
+}
+
+.shadow-container:after {
+    content: ''; 
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    height: 20px; 
+    background: rgba(0, 0, 0, 0.641); 
+    filter: blur(15px); 
+    z-index: 0; 
+}
+
+@media (max-width: 1149px) { 
+    .home-page-graphic {
+        justify-content: center;
+        align-items: center;
+        padding: 0 36px;
+        width: clamp(225px, 70vw, 600px);
+    }
+
+    #home-page-content {
+        align-self: center;
+        justify-self: center;
+        text-align: center;
+        display: block;
+        height: 100vh; 
+    }
+
+    .home-page-text {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+}
+
+@media (max-width: 542px) { 
+    #home-page-content {
+        margin: 10px;
+    }
+
+    .home-page-text {
+        min-width: 200px;
+    }
+
+    .home-page-text h1 {
+        font-size: 200%;
+        line-height: 30px;
+    }
+    
+    .home-page-graphic {
+        padding: 0 5px;
+    }
+
+    .season-stat-container {
+        flex-wrap: wrap;
+    }
+
+    .season-stat-sections {
+        width: 140px;
+    }
+
+    .team-name {
+        font-size: clamp(18px, 4.5vw, 30px);
+    }
+
+    .season-stat-sections:nth-child(2n) {
+        position: relative; 
+    }
+
+    .season-stat-sections:nth-child(2n)::before {
+        content: "" !;
+    }
+
+    .week-result-container {
+        display: block !important;
+    }
+
+    .win-loss-icon {
+        width: -webkit-fill-available !important;
+        margin: 0 !important;
+    }
+
+    .team-logo {
+        max-height: 45px !important;
+    }
+
+    .team-info p {
+        font-size: 23px !important;
+    }
+}
+
+@media (max-width: 387px) {
+    .season-stat-sections {
+        margin-right: 0 !important;
+    }
+}
+
+.form-container {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+#submission-banner {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(40, 40, 40);
+    text-align: center;
+    height: 60px;
+    font-size: 16px;
+    z-index: 99;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px -2px 4px 0px;
+}
+
+#submission-banner.hidden {
+    display: none;
+}
+
+#submission-banner .button {
+    border-color: rgb(103, 186, 249);
+    color: rgb(103, 186, 249);
+    border-width: 2px;
+}
+
+#submission-banner .button:hover {
+    background-color: rgb(17, 46, 99);
+}
+
+.radio-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 10px;
+}
+
+.radio-container {
+    display: flex;
+    gap: 15px;
+}
+
+.radio-label {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    color: grey;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked + .radio-label {
+    color: black;
+    background-color: #007bffb3;
+}
+
+.team-logo-select {
+    height: 40px; 
+    max-height: 60px; 
+    width: auto;
+    border-radius: 50%;  
+    object-fit: cover;
+}
+  
+.container {
+    width: 93vw;
+    max-width: 650px;
+    height: fit-content;
+    border-radius: 10px;
+    margin: 15px;
+    background-color: rgb(40, 40, 40);
+    box-sizing: border-box;
+}
+
+h1 {
+    color: white;
+    font-size: x-large;
+}
+
+h2 {
+    color: rgb(150, 150, 150);
+    font-size: small;
+    margin-left: 15px;
+}
+
+.season-stat-container {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: flex-end; 
+    position: relative; 
+    
+    width: 100%; 
+}
+
+.season-stat-sections {
+    display: flex;
+    flex-direction: column;
+    margin-right: 40px; 
+}
+
+.season-stat-sections:last-child {
+    margin-right: 0; 
+}
+
+.season-stat-container h1 {
+    color: white;
+    font-size: x-large;
+    margin-left: 15px;
+    font-weight: 500;
+    margin-bottom: -10px;
+}
+
+.season-stat-sections + .season-stat-sections,
+.week-result-section + .week-result-section {
+    position: relative;
+}
+
+.season-stat-sections + .season-stat-sections::before {
+    content: "";
+    position: absolute;
+    top: 50%; 
+    left: 0;
+    transform: translateY(-50%); 
+    height: 70%; 
+    border-left: 1px solid grey; 
+}
+
+.container h2 {
+    color: rgb(150, 150, 150);
+    font-size: small;
+    margin-left: 15px;
+    margin-bottom: -5px;
+    padding-top: 10px;
+}
+
+.season-stat-container h3 {
+    color: rgb(150, 150, 150);
+    font-size: small;
+    margin-left: 15px;
+    font-weight: 100;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+hr {
+    border: .5px dotted rgb(59, 59, 59);
+    width: calc(100% - 30px);
+    margin: 30px 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.expandable-box {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+    background-color: rgb(40, 40, 40);
+    opacity: 0;
+}
+
+.expandable-box.open {
+    max-height: 200px; 
+    opacity: 1;
+    padding-top: 0px; 
+    font-style: italic;
+}
+
+.expandable-box.open h1{
+    font-weight: 200;
+}
+
+.Carousel {
+    display: flex;
+    flex-direction: column;
+}
+
+.Carousel__Wrapper {
+    position: relative; 
+}
+
+.CarouselArrow {
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%); 
+    background: rgb(76, 76, 76); 
+    cursor: pointer; 
+    z-index: 98; 
+    border: 1px;
+    border-style: solid;
+    border-color: rgb(150, 150, 150);
+    color: white;
+    font-size: xx-large;
+}
+
+.CarouselArrow--left {
+    left: 0; 
+    border-bottom-right-radius: 80px;
+    border-top-right-radius: 80px;
+    padding-left: 10px;
+    border-left: 0;
+    padding-right: 10px;
+}
+
+.CarouselArrow--right {
+    right: 0; 
+    border-bottom-left-radius: 80px;
+    border-top-left-radius: 80px;
+    padding-right: 10px;
+    border-right: 0;
+    padding-left: 10px;
+}
+
+.Carousel__Outer {
+    overflow: hidden; 
+    width: 100%; 
+}
+
+.Carousel__Inner {
+    display: flex; 
+    transition: transform 350ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.CarouselSlide {
+    min-width: 200px; 
+    line-height: 5px;
+    margin: 0 4px; 
+    flex-shrink: 0; 
+    text-align: center;
+}
+
+.week-container {
+    
+    padding: 1px;
+    background: rgb(54, 54, 54); 
+    border: 1px solid;
+    border-radius: 4px; 
+    border-color: rgb(76, 76, 76);
+}
+
+.week-container.clicked {
+    border-width: 2px;
+    background: rgb(17, 46, 99); 
+    border-color: rgb(103, 186, 249);
+}
+
+.week-container h4 {
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+.week-container p {
+    color: rgb(150, 150, 150);
+    margin-bottom: 15px;
+    font-style: italic;
+    font-size: smaller;
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+
+.week-container .points-value {
+    color: rgb(150, 150, 150);
+    margin-bottom: 15px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.week-result-container {
+    display: flex;
+    align-items: flex-start; 
+    justify-content: space-between; 
+    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: clamp(20px, 5.5vw, 40px); 
+    width: fit-content; 
+}
+
+.week-result-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.league-password {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s ease-out;
+    text-align: left;
+    display: none;
+}
+
+.league-password.expanded {
+    max-height: 1000px; 
+    display: block;
+}
+
+.win-loss-icon {
+    border: 1px solid;
+    border-radius: 4px;
+    border-color: rgb(76, 76, 76);
+    width: 60px;
+    height: 70px;
+    flex-shrink: 0;
+    text-align: center;
+    font-size: large;
+    font-style: italic;
+    font-weight: 900;
+    line-height: 1px;
+    letter-spacing: 3px;
+    color: white;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-left: 8px;
+    align-content: center;
+}
+
+.win-loss-icon.win { 
+    background: rgb(1, 189, 1);
+}
+
+.win-loss-icon.loss { 
+    background: rgb(189, 1, 1);
+}
+
+.win-loss-icon.null { 
+    background: grey;
+}
+
+.win-loss {
+    flex-shrink: 0;  
+}
+
+.week-result-section p,
+.button-container button,
+.opp-result-header {
+    margin: 0; 
+    font-weight: bold;
+    color: rgb(150, 150, 150);
+    font-size: x-small;
+    letter-spacing: 1px;
+}
+
+.button-container {
+    margin-left: 15px;
+}
+
+.new-league-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+}
+
+.container h5 {
+    margin-left: 20px;
+    color: white;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.new-league-container button {
+    padding: 10px;
+    background: rgb(54, 54, 54); 
+    border: 1px solid;
+    border-radius: 4px; 
+    border-color: rgb(76, 76, 76);
+    color: white;
+    height: 100px;
+    width: 100%;
+}
+
+.league-info {
+    display: flex;
+    color: rgb(150, 150, 150);
+    padding-left: 15px;
+    margin-bottom: -10px;
+    background-color: rgb(54, 54, 54);
+    border-bottom: white;
+    border-width: 10px;
+    height: 30px;
+    font-size: smaller;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.league-info .league-info-right {
+    margin-left: auto;  
+    text-align: right;
+    padding-right: 15px;
+}
+
+.league-info-id,
+.league-info-pass {
+    font-style: italic;
+}
+
+.user-team-info {
+    display: flex;
+    flex: 2 1 0;
+    padding-top: 15px;
+    padding-left: 15px;
+    align-items: center;
+}
+
+.user-team-logo {
+    height: 50px; 
+    max-height: 60px; 
+    width: auto;
+    margin-right: 15px;
+    border-radius: 50%;  
+    object-fit: cover;
+}
+
+a {
+    text-decoration: none; 
+}
+
+.points-stats {
+    font-size: small;
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.stats-section {
+    flex-grow: 1;  
+    display: flex;
+    flex-direction: column;
+    padding-top: 17px;
+}
+
+#opp-stats,
+#opp-season-stats {
+    padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+#opp-score-template {
+    font-size: small;
+}
+
+.stat {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding-bottom: 2px;
+    padding-right: clamp(5px, 2vw, 20px);
+}
+
+.stat-number {
+    font-weight: 600; 
+    font-size: medium;
+    color: white;
+    min-width: 20px; 
+    text-align: right; 
+    padding-right: 10px;
+}
+
+.opp-header-team-name,
+.opp-header-team-points,
+.opp-header-team-winners,
+.opp-header-team-scores,
+.opp-header-team-wins,
+.opp-team-name,
+.opp-team-points,
+.opp-team-winners,
+.opp-team-scores,
+.opp-team-wins {
+    flex: 1; 
+    text-align: center; 
+    padding: 5px 0;
+}
+
+.opp-team-name {
+    font-weight: 600;
+}
+
+.opp-team-points,
+.opp-team-winners,
+.opp-team-scores {
+    font-style: italic;
+}
+
+.opp-row {
+    align-items: center;
+}
+
+.opp-result-header {
+    display: flex; 
+    font-weight: 100;
+    border-bottom: 1px solid grey; 
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.opp-stat {
+    display: flex;                        
+    width: 100%;                          
+    padding-bottom: 2px; 
+    color: rgb(150, 150, 150);
+    letter-spacing: 1px;
+    flex-grow: 1;
+    font-style: italic;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.opp-result-section {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    color: rgb(150, 150, 150); 
+    letter-spacing: 1px; 
+    flex: 1;
+    font-size: small;
+}
+
+.stat-label-a {
+    font-weight: bold;
+    color: rgb(150, 150, 150);
+    font-weight: 100;
+    letter-spacing: 1px;
+    text-align: left;
+    flex-grow: 1;
+    font-style: italic;
+}
+
+#toggle-advanced,
+#toggle-season-stats {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
+    margin-left: -6px;
+    border-radius: 5px;
+}
+
+.caret {
+    display: inline-block;
+    margin-left: 2px;
+    margin-bottom: 1px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgb(150, 150, 150);
+}
+
+#toggle-advanced:hover .caret,
+#toggle-season-stats:hover .caret {
+    border-top: 5px solid black;
+}
+
+#toggle-advanced:hover,
+#toggle-season-stats:hover {
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+}
+
+#season-stats {
+    margin: 0 20px;
+}
+
+#advanced-search,
+#season-stats {
+    height: 0; 
+    overflow: hidden; 
+    opacity: 0; 
+    transition: height 400ms ease, opacity 400ms ease; 
+}
+
+#advanced-search.visible,
+#season-stats.visible {
+    max-height: 200px; 
+    height: auto;
+    opacity: 1; 
+}
+
+#advanced-search.hidden,
+#season-stats.hidden {
+    max-height: 0; 
+    opacity: 0; 
+    pointer-events: none; 
+}
+
+.caret {
+    display: inline-block;
+    margin-left: 2px;
+    margin-bottom: 1px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgb(150, 150, 150);
+}
+
+.matchup-wrapper {
+    display: flex;
+    flex-wrap: wrap; 
+    box-sizing: border-box;
+}
+
+.team-row {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    flex-wrap: wrap;
+    gap: clamp(10px, 1vw, 20px);
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(100% - 20px);
+    padding-top: 20px;
+    padding-left: clamp(10px, 2vw, 20px);
+    padding-right: clamp(10px, 2vw, 20px);
+}
+
+.team-container {
+    flex: 1 1 calc(50% - 20px); 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    min-width: 200px; 
+    border-radius: 26px;
+    box-shadow: rgba(0, 0, 0, 0.24) 3px 0px 3px 0px;
+}
+
+.team-container-top {
+    display: flex;
+    box-sizing: border-box;
+    flex: 1;
+    z-index: 1;
+}
+
+.team-info {
+    flex: 2 1 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-sizing: border-box;
+    max-height: 70px;
+    height: auto; 
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(21, 22, 23, 0.4));
+    border-width: 5px 0 5px 5px;
+    border-style: solid;
+    border-color: rgb(54, 54, 54);
+}
+
+.team-logo {
+    max-height: 60px; 
+    width: auto;
+    margin-right: clamp(0px, 1vw, 15px);
+}
+
+.team-info p {
+    font-size: 24px; 
+    margin: 0; 
+    font-weight: bold;
+    color: white;
+    padding-right: 10px;
+}
+
+.score-prediction {
+    flex: 1 1 0;
+    background: rgb(54, 54, 54); 
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 15px;
+    box-sizing: border-box;
+    height: 70px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textbox {
+    max-width: 45px;
+    max-height: 20px;
+    width: 6vw;
+    height: auto;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    text-align: center;
+    font-size: clamp(20px, 4vw, 24px); 
+    font-weight: 600;
+}
+
+.team-container-actual-score {
+    background: rgb(187, 187, 187); 
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: -40px;
+    padding: 26px 15px 6px;
+    max-height: 90px;
+    height: auto; 
+    overflow: hidden; 
+    font-weight: bold;
+    font-size: x-large; 
+}
+
+.correct-prediction {
+    background-color: rgb(5, 108, 7) !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgb(5, 108, 7);
+}
+
+.team-container.correct-winner {
+    border: 5px solid rgb(5, 108, 7);
+}
+
+.team-container-actual-score.correct-winner {
+    background: rgb(5, 108, 7);
+    color: white;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.team-container.incorrect-winner {
+    border: 5px solid rgb(161, 2, 2);
+}
+
+.team-container-actual-score.incorrect-winner {
+    background: rgb(161, 2, 2);
+    color: white;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.team-container.selected-winner {
+    border: 5px solid rgb(55, 114, 223);
+}
+
+.matchup-wrapper .points {
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    text-align: right;
+    width: 100%;
+    margin-right: 10px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
