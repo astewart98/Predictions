@@ -6,11 +6,10 @@ load_dotenv()
 
 def create_connection():
     return pymssql.connect(
-        server=os.getenv("DB_SERVER"),
-        port=int(os.getenv("DB_PORT")),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
+        server="/cloudsql/sports-predictions-440800:us-east5:projections-database",
+        user="sqlserver",
+        password="Yubullyme69!",
+        database="projectionsDatabase"
     )
 
 current_year = 2024
