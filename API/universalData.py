@@ -6,18 +6,14 @@ load_dotenv()
 
 class DatabaseConnection:
     def __init__(self):
-        # Fetch and replace underscores with colons in the DB_SERVER environment variable
-        db_server = os.getenv("DB_SERVER").replace("_", ":")
-        
         # Initialize the connection
         self.connection = pymssql.connect(
-            server=db_server,  # Now using the modified server name
-            port=int(os.getenv("DB_PORT", 1433)),  # Default to 1433 if not set
+            server=os.getenv("DB_SERVER"),
+            port=int(os.getenv("DB_PORT", 1433)),  # Default to 1433
             user=os.getenv("DB_USER"),
             password=os.getenv("DB_PASSWORD"),
             database=os.getenv("DB_NAME")
         )
-
 
     def __enter__(self):
         # Return the connection object when entering the `with` block
