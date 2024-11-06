@@ -7,7 +7,7 @@ load_dotenv()
 class DatabaseConnection:
     def __init__(self):
         # Initialize the connection
-        connection_name = "sports-predictions-440800:us-east5:projections-database"
+        connection_name = "sports-predictions-440800:projections-database"
         self.connection = pymssql.connect(
             server=connection_name,
             port=int(os.getenv("DB_PORT", 1433)),  # Default to 1433
