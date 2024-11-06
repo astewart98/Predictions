@@ -6,7 +6,7 @@ load_dotenv()
 
 def create_connection():
     return pymssql.connect(
-        server="/cloudsql/sports-predictions-440800:us-east5:projections-database",
+        host="/cloudsql/sports-predictions-440800:us-east5:projections-database",
         user="sqlserver",
         password="Yubullyme69!",
         database="projectionsDatabase"
