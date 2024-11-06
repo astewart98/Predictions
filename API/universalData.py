@@ -8,7 +8,7 @@ def create_connection():
             host="/cloudsql/sports-predictions-440800:us-east5:projections-database",
             user="sqlserver",              # Database username
             password="Yubullyme69!",        # Database password
-            database="projectionsDatabase"  # Target database name
+            database="predictionsDatabase"  # Target database name
         )
         print("Connection successful!")  # Debug: confirms successful connection
         return connection
