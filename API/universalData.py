@@ -11,19 +11,15 @@ class DatabaseConnection:
         db_password = os.getenv("DB_PASSWORD")
         db_name = os.getenv("DB_NAME")
 
-        # Default connection details for local development
-        server = os.getenv("DB_SERVER", "localhost")  # Default to localhost for local dev
-        port = int(os.getenv("DB_PORT", 1433))  # Default to 1433 if not set
-
-        # Check if we are running on Cloud Run (based on GAE_ENV)
-        if os.getenv("GAE_ENV") == "standard":  # Check if in Cloud Run environment
-            connection_name = os.getenv("CLOUDSQL_CONNECTION_NAME", "sports-predictions-440800:us-east5:projections-database")
-            server = f"/cloudsql/{connection_name}"  # Use Cloud SQL socket path for Cloud Run
+        # Get the Cloud SQL connection name from environment variable
+        cloud_sql_connection_name = os.getenv("CLOUDSQL_CONNECTION_NAME")
+        
+        # Cloud SQL Unix socket file path
+        unix_socket = f"/cloudsql/{cloud_sql_connection_name}"
 
         # Initialize the connection
         self.connection = pymssql.connect(
-            server=server,
-            port=port,
+            server=unix_socket,
             user=db_user,
             password=db_password,
             database=db_name
