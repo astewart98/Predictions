@@ -3,6 +3,7 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-y: scroll;
+    overflow-x: hidden;
     font-family: -apple-system, BlinkMacSystemFont, Roboto, Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
@@ -158,6 +159,8 @@ html, body {
     margin: auto;
     top: 80px;
     bottom: 20px;
+    left: 0;
+    right: 0;
 }
 
 #login-form,
@@ -359,7 +362,7 @@ html, body {
 
     .win-loss-icon {
         width: -webkit-fill-available !important;
-        margin: 0 !important;
+        margin: 0 10px !important;
     }
 
     .team-logo {
@@ -729,6 +732,10 @@ hr {
     color: rgb(150, 150, 150);
     font-size: x-small;
     letter-spacing: 1px;
+}
+
+.week-result-section p {
+    margin-left: 10px;
 }
 
 .button-container {
