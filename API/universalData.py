@@ -11,8 +11,7 @@ class DatabaseConnection:
             port=1433,
             user="scorecast",
             password="Yubullyme69!",
-            database="projectionsdatabase",
-            ssl=True
+            database="projectionsdatabase"
         )
 
     def __enter__(self):
