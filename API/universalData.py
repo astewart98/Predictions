@@ -7,11 +7,11 @@ load_dotenv()
 class DatabaseConnection:
     def __init__(self):
         self.connection = pymssql.connect(
-            server=os.getenv("DB_SERVER"),
-            port=int(os.getenv("DB_PORT", 1433)),
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD"),
-            database=os.getenv("DB_NAME")
+            server="projectionsdatabase.database.windows.net",
+            port=1433,
+            user="scorecast",
+            password="Yubullyme69!",
+            database="projectionsdatabase"
         )
 
     def __enter__(self):
