@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify, session, redirect, url_for, render_te
 import pymssql
 import bcrypt
 import os
-import logging
 from API import universalData
 
 app = Flask(__name__)
@@ -14,18 +13,12 @@ def home_page():
     return render_template('homePage.html')
 
 # Initial database wakeup
-logging.basicConfig(level=logging.INFO)
-
-def wake_up_database():
-    try:
-        with universalData.create_connection() as conn:
-            with conn.cursor() as cursor:
-                cursor.execute("SELECT 1")
-                logging.info("Database wake-up successful!")
-                print("Database wake-up successful!")
-    except Exception as e:
-        logging.error(f"Error waking up the database: {e}")
-
+@app.route('/wakeup', methods=['GET'])
+def wake_up():
+    with universalData.create_connection() as conn:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT 1")
+    return jsonify({'message': 'Database wake-up triggered successfully!'})
 
 # Login logic
 @app.route('/api/login', methods=['POST'])
