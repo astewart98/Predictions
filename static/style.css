@@ -676,32 +676,35 @@ hr {
     position: relative;
 }
 
-.loading-overlay {
-    position: absolute;
-    top: 0;
-    left: -100%;
+.skeleton-loader {
+    background-color: #e0e0e0;
+    border-radius: 4px;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2));
-    animation: slide 5s linear infinite;
-    pointer-events: none;
+    animation: shimmer 5s infinite linear;
+    margin-bottom: 10px;
 }
-    
-@keyframes slide {
+
+@keyframes shimmer {
     0% {
-        left: -100%;
-        opacity: 1;
-    }
-    50% {
-        left: 100%;
-        opacity: 1;
+        background-position: -200px 0;
     }
     100% {
-        left: -100%;
-        opacity: 0;
+        background-position: 200px 0;
     }
 }
 
+.week-result-section .win-loss .skeleton-loader {
+    height: 60px; 
+}
+
+.week-result-section .stats-section .skeleton-loader {
+    height: 30px; 
+}
+
+.skeleton-loader.done {
+    animation: none; 
+}
 
 .league-password {
     max-height: 0;
