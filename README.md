@@ -2,6 +2,8 @@
 
 ScoreCast is a **Score Prediction** game where users guess NFL scores and earn points based on their accuracy. The application tracks game results and displays player rankings in real-time.
 
+Check out the live application here: [ScoreCast](https://scorecast1-ehayckcugzaja0gh.eastus2-01.azurewebsites.net)
+
 ## Technologies Used
 
 ScoreCast is a full-stack application built with:
