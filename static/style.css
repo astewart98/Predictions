@@ -685,7 +685,6 @@ hr {
     color: transparent;
     animation: shimmer 1.2s infinite linear alternate;
     margin-bottom: 10px;
-    transition: opacity 1s ease;
 }
 
 @keyframes shimmer {
@@ -707,7 +706,8 @@ hr {
 
 .skeleton-loader.done {
     animation: none;
-    opacity: 0; 
+    opacity: 0;
+    transition: opacity 1s ease;
 }
 
 .league-password {
