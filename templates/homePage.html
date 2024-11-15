@@ -73,6 +73,21 @@
     </body>
         <script>
 
+            function fetchAndWakeUpDatabase() {
+                fetch('/wakeup')  // Make a GET request to the wakeup route
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Wake-up triggered:', data.message);  // Log the success message
+                    })
+                    .catch(error => {
+                        console.error('Error triggering wake-up:', error);  // Handle any errors
+                    });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                fetchAndWakeUpDatabase();  // Call the function to wake up the database
+            });
+            
             // Show login/register containers
             document.getElementById('toggle-to-register').addEventListener('click', function() {
                 showRegisterForm();

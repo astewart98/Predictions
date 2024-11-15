@@ -22,6 +22,7 @@ def wake_up_database():
             with conn.cursor() as cursor:
                 cursor.execute("SELECT 1")
                 logging.info("Database wake-up successful!")
+                print("Database wake-up successful!")
     except Exception as e:
         logging.error(f"Error waking up the database: {e}")
 
