@@ -685,6 +685,7 @@ hr {
     color: transparent;
     animation: shimmer 1.2s infinite linear alternate;
     margin-bottom: 10px;
+    z-index: 9999;
 }
 
 @keyframes shimmer {
