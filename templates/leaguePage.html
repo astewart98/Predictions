@@ -340,13 +340,13 @@
             window.addEventListener("load", function() {
                 setTimeout(function() {
                     const loaders = document.querySelectorAll('.skeleton-loader');
-
+                
                     loaders.forEach(function(loader) {
                         loader.classList.add('done');
                     });
                 }, 5000);
             });
-
+            
             // Begin initial data fetching
             document.addEventListener('DOMContentLoaded', fetchAndPopulateAllData);
 
