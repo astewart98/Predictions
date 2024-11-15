@@ -2,18 +2,29 @@ from flask import Flask, request, jsonify, session, redirect, url_for, render_te
 import pymssql
 import bcrypt
 import os
+import logging
 from API import universalData
 
 app = Flask(__name__)
 app.secret_key = 'dev_secret_key_12345'
-print("DB_SERVER:", os.getenv("DB_SERVER"))
-print("DB_USER:", os.getenv("DB_USER"))
-
 
 # Homepage redirect
 @app.route('/')
 def home_page():
     return render_template('homePage.html')
+
+# Initial database wakeup
+logging.basicConfig(level=logging.INFO)
+
+def wake_up_database():
+    try:
+        with universalData.create_connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute("SELECT 1")
+                logging.info("Database wake-up successful!")
+    except Exception as e:
+        logging.error(f"Error waking up the database: {e}")
+
 
 # Login logic
 @app.route('/api/login', methods=['POST'])
