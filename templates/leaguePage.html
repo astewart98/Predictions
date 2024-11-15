@@ -223,16 +223,18 @@
                 </section>
                 <div class="week-result-container">
                     <div class="week-result-section win-loss">
-                        <div class="win-loss-icon">
+                        <div class="loading-overlay"></div> <!-- Loading bar overlay -->
+                        <div class="win-loss-icon"> 
                             <h4>LOSS</h4> 
                         </div>
                     </div>
-                
+                    
                     <div class="week-result-section stats-section">
+                        <div class="loading-overlay"></div> <!-- Loading bar overlay -->
                         <p>YOUR TEAM</p>
                         <div class="points-stats">
                             <div class="stat">
-                                <span class="stat-number user-points">43</span>
+                                <span class="stat-number user-points">43</span> 
                                 <span class="stat-label-a">POINTS</span>
                             </div>
                             <div class="stat" style="border-left: 1px solid grey; padding-left: 10px;">
@@ -333,6 +335,22 @@
             if (!userId || !leagueId) {
                 window.location.href = '/';  
             }
+
+            // Example of showing the loading bar for 5 seconds
+            document.addEventListener("DOMContentLoaded", function() {
+                const overlays = document.querySelectorAll('.loading-overlay');
+                
+                overlays.forEach(overlay => {
+                    // Add loading bar
+                    overlay.style.display = "block";
+                    
+                    // Hide the loading bar after 5 seconds
+                    setTimeout(() => {
+                        overlay.style.display = "none";
+                    }, 5000); // 5 seconds
+                });
+            });
+            
 
             // Begin initial data fetching
             document.addEventListener('DOMContentLoaded', fetchAndPopulateAllData);
