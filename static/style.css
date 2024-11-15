@@ -683,16 +683,16 @@ hr {
     width: 100%;
     height: 100%;
     color: transparent;
-    animation: shimmer 5s infinite linear;
+    animation: shimmer 1s infinite linear;
     margin-bottom: 10px;
 }
 
 @keyframes shimmer {
     0% {
-        background-color: #F5F5F5;
+        background-color: rgb(71, 70, 70);
     }
     100% {
-        background-color: #E2E2E2;
+        background-color: rgb(50, 50, 50);
     }
 }
 
