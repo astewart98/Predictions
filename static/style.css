@@ -7,6 +7,26 @@ html, body {
     font-family: -apple-system, BlinkMacSystemFont, Roboto, Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
+.tooltip {
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 4px 10px;
+    position: absolute;
+    z-index: 1000;
+    bottom: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
+}
+
+#login-form:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
 .button {
     background-color: transparent;
     border: 1px solid;
