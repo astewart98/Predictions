@@ -682,17 +682,17 @@ hr {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #e0e0e0;
+    color: transparent;
     animation: shimmer 5s infinite linear;
     margin-bottom: 10px;
 }
 
 @keyframes shimmer {
     0% {
-        background-position: -200px 0;
+        background-color: #F5F5F5;
     }
     100% {
-        background-position: 200px 0;
+        background-color: #E2E2E2;
     }
 }
 
@@ -705,7 +705,8 @@ hr {
 }
 
 .skeleton-loader.done {
-    animation: none; 
+    animation: none;
+    opacity: 0; 
 }
 
 .league-password {
