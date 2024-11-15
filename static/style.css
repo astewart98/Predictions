@@ -687,6 +687,7 @@ hr {
     margin-bottom: 10px;
     z-index: 9999;
     transition: opacity 1s ease;
+    opacity: 1;
 }
 
 @keyframes shimmer {
