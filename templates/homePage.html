@@ -37,7 +37,7 @@
 
                     <p>Not Signed up Yet?</p>
                     <button class="button" id="toggle-to-register">Sign Up</button>
-                    <span class="tooltip">Are you an Employer?<br>Log In using:<br><br>E-mail: test@email.com<br>Password: 1234</span>
+                    <div class="tooltip"><span style="font-weight: bold;">Are you an Employer?</span><span style="font-style: italic;"> Autofill credentials <a href="#" onclick="autofill()">here</a><br><span style="font-size: small;">Please allow up to one minute for Sign In<br>Server is in 'eco-mode' to lower cost</span></span></div>
                 </div>
                 <div id="register-form">
                     <span class="close-button">&times;</span>
@@ -118,6 +118,11 @@
             document.getElementById('get-started').addEventListener('click', function() {
                 toggleLoginRegister();
             });
+
+            function autofill() {
+                document.getElementById('login-email').value = "test@email.com";
+                document.getElementById('login-pass').value = "1234";
+            }
 
             function toggleLoginRegister() {
                 var loginRegister = document.getElementById('login-register');
