@@ -26,6 +26,7 @@ html, body {
 #login-form a {
     color: white;
     text-decoration: underline;
+    padding-top: 10px;
 }
 
 #login-form a:hover {
