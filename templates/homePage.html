@@ -93,8 +93,8 @@
                     .then(data => {
                         console.log('Wake-up triggered:', data.message);
                     })
-                    .catch(error => {
-                        console.error('Error triggering wake-up:', error);
+                    .catch(() => {
+                        console.log('Server is still waking up');
                     });
             }
 
@@ -237,7 +237,7 @@
 
                 function tryLogin() {
                     if (Date.now() > endTime) {
-                        alert('Login failed: Server is not responding.');
+                        alert('Login failed: Server is not responding. Please try again in a few minutes');
                         return;
                     }
                 

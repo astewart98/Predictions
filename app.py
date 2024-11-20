@@ -18,7 +18,7 @@ def wake_up():
     with universalData.create_connection() as conn:
         with conn.cursor() as cursor:
             cursor.execute("SELECT 1")
-    return jsonify({'message': 'Database wake-up triggered successfully!'})
+    return jsonify({'message': 'Database has successfully woken up!'})
 
 # Login logic
 @app.route('/api/login', methods=['POST'])
