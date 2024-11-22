@@ -89,6 +89,8 @@
     </body>
         <script>
 
+            
+
             function fetchAndWakeUpDatabase() {
                 fetch('/wakeup')
                     .then(response => response.json())
@@ -200,8 +202,14 @@
             document.getElementById('register-submit').addEventListener('click', handleRegister);
 
             // Login validation
-            function handleLogin(event) {
-                const loaders = document.querySelectorAll('.skeleton-loader');
+            function handleLogin(event) {    
+                event.preventDefault(); 
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-pass').value;
+
+                if (email && password) {
+                    loginUser(email, password);
+                    const loaders = document.querySelectorAll('.skeleton-loader');
 
                     loaders.forEach(function(loader) {
                         loader.classList.remove('done');
@@ -209,13 +217,6 @@
 
                     alert("Please allow up to one minute for Sign In. Server is in 'eco-mode' to lower cost.");
                     
-                event.preventDefault(); 
-                const email = document.getElementById('login-email').value;
-                const password = document.getElementById('login-pass').value;
-
-                if (email && password) {
-                    
-                    loginUser(email, password);
                 } else {
                     alert('Please fill in all fields.');
                 }
