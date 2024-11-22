@@ -34,6 +34,7 @@
                     <input type="email" id="login-email" name="login-email" placeholder="email@example.com" required><br>
                     <label for="login-pass">Password:</label>
                     <input type="password" id="login-pass" name="login-pass" required><br>
+                    <div class="skeleton-loader done"></div>
                     <button id="login-submit" class="button">Sign In</button><br>
 
                     <p>Not Signed up Yet?</p>
@@ -200,6 +201,14 @@
 
             // Login validation
             function handleLogin(event) {
+                const loaders = document.querySelectorAll('.skeleton-loader');
+
+                    loaders.forEach(function(loader) {
+                        loader.classList.remove('done');
+                    });
+
+                    alert("Please allow up to one minute for Sign In. Server is in 'eco-mode' to lower cost.");
+                    
                 event.preventDefault(); 
                 const email = document.getElementById('login-email').value;
                 const password = document.getElementById('login-pass').value;
